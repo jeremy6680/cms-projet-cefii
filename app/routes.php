@@ -11,7 +11,12 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', [
+	'as' => 'home',
+	'uses' => 'HomeController@index'
+]);
+
+Route::get('/posts/{slug}', [
+	'as' => 'post-show',
+	'uses' => 'PostController@getShow'
+]);

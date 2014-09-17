@@ -15,9 +15,11 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
+	public function index()
 	{
-		return View::make('hello');
+		$posts = Post::where('draft', '=', 0) -> get();
+		
+		return View::make('home')->with('posts', $posts);
 	}
 
 }
