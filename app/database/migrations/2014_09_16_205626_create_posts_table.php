@@ -14,8 +14,8 @@ class CreatePostsTable extends Migration {
 	{
 		Schema::create('posts', function($t) {
 			$t->increments('id');
-			$t->string('title', 200);
-			$t->string('slug', 400);
+			$t->string('title', 200)->unique();
+			$t->string('slug', 400)->unique();
 			$t->boolean('draft');
 			$t->text('body');
 			$t->timestamps();

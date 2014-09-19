@@ -11,6 +11,19 @@
 |
 */
 
+/* voir si la database est connectée : 
+Route::get('/db', function() 
+{
+	return DB::select('select database();');
+});
+*/
+/* Pour voir le contenu des tables de la BDD : 
+Route::get('/db', function() 
+{
+	return DB::table('posts')->get();
+});
+*/
+
 /*
  * / = home
  * /posts - all posts
@@ -23,16 +36,23 @@ Route::get('/', [
 	'as' => 'home',
 	'uses' => 'HomeController@index'
 ]);
-/* BUG on this one
-Route::get('/posts', function($posts)
-{
-	return View::make('posts.index');
-});
-*/
+
+Route::get('/posts/', [
+	'as' => 'posts',
+	'uses' => 'PostController@index'
+]);
+
 Route::get('/posts/{slug}', [
 	'as' => 'post-show',
-	'uses' => 'PostController@getShow'
+	'uses' => 'PostController@show'
+]);
+
+Route::get('/posts/create', [
+	'as' => 'create',
+	'uses' => 'PostController@create'
 ]);
 
 /* Test */
 Route::resource('blog', 'ArticleController');
+
+
