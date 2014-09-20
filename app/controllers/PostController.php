@@ -52,9 +52,11 @@ class PostController extends BaseController
 		
 		$title = Input::get('title');
 		$content = Input::get('content');
+		$slug = Str::slug($title);
 		$post = new Post();
 		$post->title = $title;
 		$post->content = $content;
+		$post->slug = $slug;
 		$post->save();
 		return Redirect::route('posts.index')->withMessage("L'article a été créé");
 	}
