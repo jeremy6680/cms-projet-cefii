@@ -6,6 +6,6 @@
 			<article>
 				<h2>{{ $post->title }}</h2>
 				<p>Published on {{ $post->created_at->format('j F Y') }}</p>
-				{{ Markdown::parse($post->body) }}
+				{{ Markdown::parse($post->content) }}
 			</article>
 @stop

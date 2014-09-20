@@ -2,6 +2,11 @@
 
 class PostController extends BaseController 
 {
+	public function __construct()
+	{
+		$this->beforeFilter('csrf', array('on' => 'post'));
+	}
+	
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -22,7 +27,7 @@ class PostController extends BaseController
 	 */
 	public function create()
 	{
-		//
+		return View::make('posts.create');
 	}
 
 
@@ -33,7 +38,25 @@ class PostController extends BaseController
 	 */
 	public function store()
 	{
-		//
+		// define rules
+		$rules = array(
+				'title' => array('required', 'unique:posts,title'),
+				'content' => array('required')
+				);
+		// pass input to validator
+		$validator = Validator::make(Input::all(), $rules);
+		// test if input fails
+		if($validator->fails()) {
+			return Redirect::route('posts.create')->withErrors($validator)->withInput();
+		}
+		
+		$title = Input::get('title');
+		$content = Input::get('content');
+		$post = new Post();
+		$post->title = $title;
+		$post->content = $content;
+		$post->save();
+		return Redirect::route('posts.index')->withMessage("L'article a été créé");
 	}
 
 
@@ -43,6 +66,7 @@ class PostController extends BaseController
 	 * @param  int  $id
 	 * @return Response
 	 */	
+	 
 	public function show($slug)
 	{
 		$post = Post::where('slug', '=', $slug)->firstOrFail();

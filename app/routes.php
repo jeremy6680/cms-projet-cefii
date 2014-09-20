@@ -36,7 +36,7 @@ Route::get('/', [
 	'as' => 'home',
 	'uses' => 'HomeController@index'
 ]);
-
+/*
 Route::get('/posts/', [
 	'as' => 'posts',
 	'uses' => 'PostController@index'
@@ -47,12 +47,12 @@ Route::get('/posts/{slug}', [
 	'uses' => 'PostController@show'
 ]);
 
-Route::get('/posts/create', [
+Route::get('/create', [
 	'as' => 'create',
 	'uses' => 'PostController@create'
 ]);
+*/
 
-/* Test */
-Route::resource('blog', 'ArticleController');
+Route::resource('posts', 'PostController');
 
 
