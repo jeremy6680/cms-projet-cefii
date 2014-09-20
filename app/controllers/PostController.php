@@ -4,7 +4,7 @@ class PostController extends BaseController
 {
 	public function __construct()
 	{
-		$this->beforeFilter('csrf', array('on' => 'post'));
+		$this->beforeFilter('csrf', array('on' => ['post', 'put']));
 	}
 	
 	/**
@@ -68,14 +68,21 @@ class PostController extends BaseController
 	 * @param  int  $id
 	 * @return Response
 	 */	
-	 
-	public function show($slug)
+
+	public function show($id)
 	{
-		$post = Post::where('slug', '=', $slug)->firstOrFail();
+		$post = Post::where('slug', '=', $id)->firstOrFail();
 		
 		return View::make('posts.show')->with('post', $post);
 	}
-
+	
+	/* Code suivant ne marche pas (erreur Model...)
+	public function show($id)
+	{
+		$post = Post::findOrFail($id);
+		return View::make('posts.show')->withPost($post);
+	}
+	*/
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -85,8 +92,18 @@ class PostController extends BaseController
 	 */
 	public function edit($id)
 	{
-		//
+		$post = Post::where('slug', '=', $id)->firstOrFail();
+		
+		return View::make('posts.edit')->with('post', $post);
 	}
+	
+	/* Code suivant ne marche pas (erreur Model...)
+	public function edit($id)
+	{
+		$post = Post::findOrFail($id);
+		return View::make('posts.edit')->withPost($post);
+	}
+	*/
 
 
 	/**
@@ -97,7 +114,28 @@ class PostController extends BaseController
 	 */
 	public function update($id)
 	{
-		//
+		// define rules
+		$rules = array(
+				'title' => array('required', 'unique:posts,title'),
+				'content' => array('required')
+				);
+		// pass input to validator
+		$validator = Validator::make(Input::all(), $rules);
+		// test if input fails
+		/* @TODO : Faire fonctionner le Validator de l'Update !! (a priori, problème avec méthode Edit également)
+		if($validator->fails()) {
+			return Redirect::route('posts.edit', $id)->withErrors($validator)->withInput();
+		}
+		*/
+		$title = Input::get('title');
+		$content = Input::get('content');
+		$slug = Str::slug($title);
+		$post = Post::findOrFail($id);
+		$post->title = $title;
+		$post->content = $content;
+		$post->slug = $slug;
+		$post->update();
+		return Redirect::route('posts.index')->withMessage("L'article a été modifié");
 	}
 
 
@@ -109,7 +147,9 @@ class PostController extends BaseController
 	 */
 	public function destroy($id)
 	{
-		//
+		$post = Post::findOrFail($id)->delete();
+		
+		return Redirect::route('posts.index')->withMessage("L'article a été supprimé");
 	}
 }
 

@@ -3,9 +3,10 @@
 @section('title') {{ $post->title }} @stop
 
 @section('content')
-			<article>
-				<h2>{{ $post->title }}</h2>
+			<div class="large-12 col">
+				<p>{{ link_to_route('posts.index', 'back') }}</p>
+				<h2>{{{ $post->title }}}</h2>
 				<p>Published on {{ $post->created_at->format('j F Y') }}</p>
 				{{ Markdown::parse($post->content) }}
-			</article>
+			</div>
 @stop
