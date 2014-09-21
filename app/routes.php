@@ -55,4 +55,8 @@ Route::get('/create', [
 
 Route::resource('posts', 'PostController');
 
+Route::resource('user', 'UserController');
+
+Route::controller('users', 'UsersController');
+
 
