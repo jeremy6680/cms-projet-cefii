@@ -7,7 +7,7 @@ class UserCreateValidator extends BaseValidator {
 		$this->regles = array(
 			'pseudo' => 'required|max:30|alpha|unique:users',
 			'email' => 'required|email|unique:users',
-			'password' => 'required|min:10|same:Confirmation_mot_de_passe',
+			'password' => 'required|min:8|same:Confirmation_mot_de_passe',
 		);
 	}
 

@@ -24,12 +24,12 @@ class UserController extends BaseController {
 
 	public function index()
 	{
-		return View::make('index', $this->user_gestion->index(4));
+		return View::make('users.index', $this->user_gestion->index(4));
 	}
 
 	public function create()
 	{
-		return View::make('create');
+		return View::make('users.create');
 	}
 
 	public function store()
@@ -47,12 +47,12 @@ class UserController extends BaseController {
 
 	public function show($id)
 	{
-		return View::make('show',  $this->user_gestion->show($id));
+		return View::make('users.show',  $this->user_gestion->show($id));
 	}
 
     public function edit($id)
 	{
-		return View::make('edit',  $this->user_gestion->edit($id));
+		return View::make('users.edit',  $this->user_gestion->edit($id));
 	}
 
 	public function update($id)
