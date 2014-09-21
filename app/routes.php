@@ -42,8 +42,8 @@ Route::get('/posts/', [
 	'uses' => 'PostController@index'
 ]);
 
-Route::get('/posts/{slug}', [
-	'as' => 'post-show',
+Route::get('/posts/{id}', [
+	'as' => 'posts.show',
 	'uses' => 'PostController@show'
 ]);
 

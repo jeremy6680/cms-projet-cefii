@@ -8,10 +8,10 @@
 	
 	@if($posts->count())
 		@foreach($posts as $post)
-			<h4>{{ link_to_route('posts.show', $post->title, [$post->slug] )}}</h4>
+			<h4>{{ link_to_route('posts.show', $post->title, [$post->id] )}}</h4>
 			<ul class="no-bullet button-group">
 				<li>
-					{{ link_to_route('posts.edit', 'modifier', [$post->slug], ['class' => 'tiny button']) }}
+					{{ link_to_route('posts.edit', 'modifier', [$post->id], ['class' => 'tiny button']) }}
 				</li>
 				<li>
 					{{ Form::model($post, [ 'route' => ['posts.destroy', $post->id], 'method' => 'DELETE' ]) }}
