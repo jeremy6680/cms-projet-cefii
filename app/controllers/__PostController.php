@@ -1,12 +1,22 @@
 <?php
+/* Ce contrôleur ne marche pas pour la validation */
+use Lib\Validation\PostCreateValidator as PostCreateValidator;
+use Lib\Validation\PostUpdateValidator as PostUpdateValidator;
 
-class PostController extends \BaseController {
+class PostController extends BaseController {
 
-	public function __construct()
+    protected $create_validation;
+	protected $update_validation;
+
+	public function __construct(
+		PostCreateValidator $create_validation, 
+		PostUpdateValidator $update_validation
+		)
 	{
-		$this->beforeFilter('csrf', array('on' => ['post', 'put', 'delete']));
+		parent::__construct();
+		$this->create_validation = $create_validation;
+		$this->update_validation = $update_validation;
 	}
-
 	
 	/**
 	 * Display a listing of the resource.
@@ -39,19 +49,11 @@ class PostController extends \BaseController {
 	 */
 	public function store()
 	{
-		// define rules
-		
-		$rules = array(
-				'title' => array('required', 'unique:posts,title'),
-				'content' => array('required')
-				);
-		
-		// pass input to validator
-		$validator = Validator::make(Input::all(), $rules);
-		// test if input fails
-		if($validator->fails()) {
-			return Redirect::route('posts.create')->withErrors($validator)->withInput();
-		}
+		if ($this->create_validation->fails()) {
+		  return Redirect::route('posts.create')
+		  ->withInput()
+		  ->withErrors($this->create_validation->errors());
+		} else {
 		
 		$title = Input::get('title');
 		$content = Input::get('content');
@@ -62,6 +64,7 @@ class PostController extends \BaseController {
 		$post->slug = $slug;
 		$post->save();
 		return Redirect::route('posts.index')->withMessage("L'article a été créé");
+		}
 	}
 
 
@@ -99,20 +102,11 @@ class PostController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		// define rules
-		
-		$rules = array(
-				'title' => array('required'),
-				'content' => array('required')
-				);
-		
-		// pass input to validator
-		$validator = Validator::make(Input::all(), $rules);
-		// test if input fails
-		/* @TODO : Faire fonctionner le Validator de l'Update !! (a priori, problème avec méthode Edit également) */
-		if($validator->fails()) {
-			return Redirect::route('posts.edit', $id)->withErrors($validator)->withInput();
-		}
+		if ($this->update_validation->fails($id)) {
+		  return Redirect::route('posts.edit', array($id))
+		  ->withInput()
+		  ->withErrors($this->update_validation->errors());
+		} else {
 		
 		$title = Input::get('title');
 		$content = Input::get('content');
@@ -123,6 +117,7 @@ class PostController extends \BaseController {
 		$post->slug = $slug;
 		$post->update();
 		return Redirect::route('posts.index')->withMessage("L'article a été modifié");
+		}
 	}
 
 
