@@ -2,7 +2,7 @@
 
 interface ValidatorInterface {
 
-    public function fails();
+    public function fails($id = null);
 	public function errors();
 
 }
