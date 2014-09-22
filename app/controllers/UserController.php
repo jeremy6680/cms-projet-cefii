@@ -17,6 +17,7 @@ class UserController extends BaseController {
 		)
 	{
 		parent::__construct();
+		$this->beforeFilter('auth');
 		$this->create_validation = $create_validation;
 		$this->update_validation = $update_validation;
 		$this->user_gestion = $user_gestion;

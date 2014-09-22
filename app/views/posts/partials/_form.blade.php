@@ -3,4 +3,4 @@
 				{{ $errors->first('title', '<small class="error">:message</small>') }}
 				{{ Form::textarea('content') }}
 				{{ $errors->first('content', '<small class="error">:message</small>') }}
-				{{ Form::submit('valider', array('class' => 'button')) }}
+				{{ Form::submit('valider', array('class' => 'button small')) }}

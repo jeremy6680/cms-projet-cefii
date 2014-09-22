@@ -57,6 +57,14 @@ Route::resource('posts', 'PostController');
 
 Route::resource('user', 'UserController');
 
+Route::controller('auth', 'AuthController');
+/*
+Route::filter('auth', function()
+{
+    if (Auth::guest()) return Redirect::guest('auth/login');
+});
+*/
+Route::controller('password', 'RemindersController');
+
+/* tests ci-dessous */
 Route::controller('users', 'UsersController');
-
-
