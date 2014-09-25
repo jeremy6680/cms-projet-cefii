@@ -11,6 +11,14 @@
     
     <div class="row">
       <div class="large-12 columns">
+		  	@if(Auth::check())
+		  		<div class="button-group right">
+			  		{{ link_to('posts/create', 'Créer un article', array('class' => 'success tiny button')) }}
+			  		{{ link_to('auth/logout', 'Déconnexion', array('class' => 'alert tiny button')) }}
+		  		</div>
+		  	@else
+		  		{{ link_to('auth/login', 'Se connecter', array('class' => 'success tiny button right')) }}
+		  	@endif
         <h1>My blog</h1>
       </div>
     </div>

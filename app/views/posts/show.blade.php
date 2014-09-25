@@ -6,7 +6,7 @@
 			<div class="large-12 col">
 				<p>{{ link_to_route('posts.index', 'back') }}</p>
 				<h2>{{{ $post->title }}}</h2>
-				<p>Published on {{ $post->created_at->format('j F Y') }}</p>
+				<p><em>Publié le {{ $post->created_at->format('d M Y') }} par {{{ $post->user->pseudo }}}</em></p>
 				{{ Markdown::parse($post->content) }}
 			</div>
 @stop

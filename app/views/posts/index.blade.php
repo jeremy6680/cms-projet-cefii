@@ -4,7 +4,7 @@
 
 @section('content')
 
-	{{ link_to_route('posts.create', 'Créer un nouvel article', null, ['class' => 'success button']) }}
+	{{ link_to_route('posts.create', 'Créer un nouvel article', null, ['class' => 'success tiny button']) }}
 	
 	@if($posts->count())
 		@foreach($posts as $post)

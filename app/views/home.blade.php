@@ -13,7 +13,7 @@
 				<a href="{{ URL::action('posts.show', $post->id) }}">Read more &rarr;</a>
 			</article>
 		@endforeach
-		
+
 	@endif
 
 @stop
