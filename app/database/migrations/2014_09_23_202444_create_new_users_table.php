@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration {
+class CreateNewUsersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -19,7 +19,6 @@ class CreateUsersTable extends Migration {
 			$table->string('email', 100)->unique();
 			$table->string('password', 64);
 			$table->boolean('admin')->default(false);
-            $table->string('remember_token', 100)->nullable();
 		});
 	}
 

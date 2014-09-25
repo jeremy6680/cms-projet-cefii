@@ -1,10 +1,14 @@
 <?php
 
+use Auth;
+
 class PostController extends BaseController 
 {
 	public function __construct()
 	{
 		$this->beforeFilter('csrf', array('on' => ['post', 'put']));
+		$this->beforeFilter('auth', array('except' => ['show']));
+		$this->beforeFilter('admin', array('only' => 'destroy'));
 	}
 	
 	/**
@@ -49,7 +53,6 @@ class PostController extends BaseController
 		if($validator->fails()) {
 			return Redirect::route('posts.create')->withErrors($validator)->withInput();
 		}
-		
 		$title = Input::get('title');
 		$content = Input::get('content');
 		$slug = Str::slug($title);
@@ -57,6 +60,7 @@ class PostController extends BaseController
 		$post->title = $title;
 		$post->content = $content;
 		$post->slug = $slug;
+		$post->user_id = Auth::user()->id;
 		$post->save();
 		return Redirect::route('posts.index')->withMessage("L'article a été créé");
 	}

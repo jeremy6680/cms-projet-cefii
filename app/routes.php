@@ -58,6 +58,7 @@ Route::resource('posts', 'PostController');
 Route::resource('user', 'UserController');
 
 Route::controller('auth', 'AuthController');
+
 /*
 Route::filter('auth', function()
 {
