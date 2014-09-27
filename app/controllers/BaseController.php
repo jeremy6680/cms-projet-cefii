@@ -2,6 +2,8 @@
 
 class BaseController extends Controller {
 	
+	protected $layout='layouts.master';
+	
     protected $validation;
 	
     public function __construct()
