@@ -20,7 +20,10 @@ class PostController extends BaseController
 	{
 		$posts = Post::all();
 		
-		return View::make('posts.index')->with('posts', $posts); 
+ 		$this->layout->title = 'Liste des articles';
+		$this->layout->main = View::make('dash')->nest('content','posts.index',compact('posts'));
+		
+		/*return View::make('posts.index')->with('posts', $posts);*/
 	}
 
 
@@ -31,7 +34,9 @@ class PostController extends BaseController
 	 */
 	public function create()
 	{
-		return View::make('posts.create');
+		/*return View::make('posts.create');*/
+		$this->layout->title = 'New Post';
+		$this->layout->main = View::make('dash')->nest('content', 'posts.create');
 	}
 
 
@@ -56,10 +61,13 @@ class PostController extends BaseController
 		$title = Input::get('title');
 		$content = Input::get('content');
 		$slug = Str::slug($title);
+		$draft = Input::get('draft');
 		$post = new Post();
 		$post->title = $title;
+		/* RAJOUTER PUBLICATION OU BROUILLON*/
 		$post->content = $content;
 		$post->slug = $slug;
+		$post->draft = $draft;
 		$post->user_id = Auth::user()->id;
 		$post->save();
 		return Redirect::route('posts.index')->withMessage("L'article a été créé");
@@ -72,10 +80,19 @@ class PostController extends BaseController
 	 * @param  int  $id
 	 * @return Response
 	 */	
+	/*
 	public function show($id)
 	{
 		$post = Post::findOrFail($id);
 		return View::make('posts.show')->withPost($post);
+	}
+	*/
+	 public function show($id)
+	{
+		$post = Post::findOrFail($id);
+		$comments = $post->comments()->where('approved', '=', 1)->get();
+		$this->layout->title = $post->title;
+		$this->layout->main = View::make('home')->nest('content', 'posts.show', compact('post', 'comments'));
 	}
 	
 

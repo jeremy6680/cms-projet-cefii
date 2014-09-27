@@ -4,11 +4,11 @@
 		<ul class="side-nav">
 			<li>{{HTML::link('/','Accueil')}}</li>
 			<li class="divider"></li>
-			<li class="{{ (strpos(URL::current(),route('post.new'))!== false) ? 'active' : '' }}">
-				{{HTML::linkRoute('post.new','Nouvel article')}}
+			<li class="{{ (strpos(URL::current(),route('posts.create'))!== false) ? 'active' : '' }}">
+				{{HTML::linkRoute('posts.create','Nouvel article')}}
 			</li >
-			<li class="{{ (strpos(URL::current(),route('post.list'))!== false) ? 'active' : '' }}">
-				{{HTML::linkRoute('post.list','Liste des articles')}}
+			<li class="{{ (strpos(URL::current(),route('posts.index'))!== false) ? 'active' : '' }}">
+				{{HTML::linkRoute('posts.index','Liste des articles')}}
 			</li>
 			<li class="divider"></li>
 			<li class="{{ (strpos(URL::current(),route('comment.list'))!== false) ? 'active' : '' }}">

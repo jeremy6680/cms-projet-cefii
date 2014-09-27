@@ -1,25 +1,24 @@
-@extends('templates.default')
 
-@section('title')Liste des articles @stop
 
-@section('content')
-
-	{{ link_to_route('posts.create', 'Créer un nouvel article', null, ['class' => 'success tiny button']) }}
-	
-	@if($posts->count())
-		@foreach($posts as $post)
-			<h4>{{ link_to_route('posts.show', $post->title, [$post->id] )}}</h4>
-			<ul class="no-bullet button-group">
-				<li>
-					{{ link_to_route('posts.edit', 'modifier', [$post->id], ['class' => 'tiny button']) }}
-				</li>
-				<li>
-					{{ Form::model($post, [ 'route' => ['posts.destroy', $post->id], 'method' => 'DELETE' ]) }}
-						{{ Form::button('supprimer', ['type' => 'submit', 'class' => 'tiny alert button']) }}
-					{{ Form::close() }}
-				</li>
-			</ul>
-		@endforeach
-	@endif
-
-@stop
+<h2 class="post-listings">Liste des articles</h2><hr>
+    <table>
+    	<thead>
+    		<tr>
+			    <th width="300">Titre</th>
+			    <th width="120">Modifier</th>
+			    <th width="120">Supprimer</th>
+			    <th width="120">Voir</th>
+    		</tr>
+    	</thead>
+	    <tbody>
+	    @foreach($posts as $post)
+	    	<tr>
+			    <td>{{$post->title}}</td>
+			    <td>{{HTML::linkRoute('posts.edit','Modifier',$post->id)}}</td>
+			    <td>{{HTML::linkRoute('posts.destroy','Supprimer',$post->id)}}</td>
+			    <td>{{HTML::linkRoute('posts.show','Voir',$post->id,['target'=>'_blank'])}}</td>
+	    	</tr>
+	    @endforeach
+	    </tbody>
+    </table>
+    {{-- $posts->links() --}}

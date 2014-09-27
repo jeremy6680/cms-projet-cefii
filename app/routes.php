@@ -72,6 +72,16 @@ Route::controller('users', 'UsersController');
 Route::get('login', 'AuthController@getLogin');
 
 
+View::composer('sidebar', function($view)
+{
+$view->recentPosts = Post::orderBy('id','desc')->take(5)->get();
+});
+
+
+/* Model Bindings */
+Route::model('post','Post');
+Route::model('comment','Comment');
+
 /* Admin routes */
 Route::group(['prefix' => 'admin','before'=>'auth'],function()
 {
@@ -84,10 +94,10 @@ Route::group(['prefix' => 'admin','before'=>'auth'],function()
 		return $layout;
 	 
 	});
-	Route::get('/post/list',['as' => 'post.list','uses' => 'PostController@index']);
-	Route::get('/post/new',['as' => 'post.new','uses' => 'PostController@create']);
+	Route::get('/post/index',['as' => 'post.index','uses' => 'PostController@index']);
+	Route::get('/post/create',['as' => 'post.create','uses' => 'PostController@create']);
 	Route::get('/post/{post}/edit',['as' => 'post.edit','uses' => 'PostController@edit']);
-	Route::get('/post/{post}/delete',['as' => 'post.delete','uses' => 'PostController@destroy']);
+	Route::get('/post/{post}/delete',['as' => 'post.destroy','uses' => 'PostController@destroy']);
 	Route::get('/comment/list',['as' => 'comment.list','uses' => 'CommentController@listComment']);
 	Route::get('/comment/{comment}/show',['as' => 'comment.show','uses' => 'CommentController@showComment']);
 	Route::get('/comment/{comment}/delete',['as' => 'comment.delete','uses' => 'CommentController@deleteComment']);
