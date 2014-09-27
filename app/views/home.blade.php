@@ -1,19 +1,12 @@
-@extends('templates.default')
+{{-- home page --}}
+<div class="small-8 large-8 column">
+    <div class="content">
+    	{{$content}}
+    </div>
+</div>
 
-@section('title')Home @stop
+<div class="small-4 large-4 column">
+    <aside class="sidebar">
 
-@section('content')
-
-	@if($posts->count())
-		@foreach($posts as $post)
-			<article>
-				<h2><a href="{{ URL::action('posts.show', $post->id) }}">{{ $post->title }}</a></h2>
-				<p>Published on {{ $post->created_at->format('j F Y') }}</p>
-				{{ Markdown::parse(Str::limit($post->content, 300)) }}
-				<a href="{{ URL::action('posts.show', $post->id) }}">Read more &rarr;</a>
-			</article>
-		@endforeach
-
-	@endif
-
-@stop
+    </aside>
+</div>

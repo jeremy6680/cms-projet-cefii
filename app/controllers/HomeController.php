@@ -18,8 +18,9 @@ class HomeController extends BaseController {
 	public function index()
 	{
 		$posts = Post::where('draft', '=', 0) -> get();
-		
-		return View::make('home')->with('posts', $posts);
+		$this->layout->title = 'Page d\'accueil | My Blog';
+		$this->layout->main = View::make('home')->nest('content','index',compact('posts'));
+		/*return View::make('home')->with('posts', $posts);*/
 	}
 
 }

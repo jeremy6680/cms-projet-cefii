@@ -69,3 +69,32 @@ Route::controller('password', 'RemindersController');
 
 /* tests ci-dessous */
 Route::controller('users', 'UsersController');
+Route::get('login', 'AuthController@getLogin');
+
+
+/* Admin routes */
+Route::group(['prefix' => 'admin','before'=>'auth'],function()
+{
+	/*get routes*/
+	Route::get('dash-board',function()
+	{
+		$layout = View::make('layouts.master');
+		$layout->title = 'DashBoard';
+		$layout->main = View::make('dash')->with('content','Hi admin, Welcome to Dashboard!');
+		return $layout;
+	 
+	});
+	Route::get('/post/list',['as' => 'post.list','uses' => 'PostController@index']);
+	Route::get('/post/new',['as' => 'post.new','uses' => 'PostController@create']);
+	Route::get('/post/{post}/edit',['as' => 'post.edit','uses' => 'PostController@edit']);
+	Route::get('/post/{post}/delete',['as' => 'post.delete','uses' => 'PostController@destroy']);
+	Route::get('/comment/list',['as' => 'comment.list','uses' => 'CommentController@listComment']);
+	Route::get('/comment/{comment}/show',['as' => 'comment.show','uses' => 'CommentController@showComment']);
+	Route::get('/comment/{comment}/delete',['as' => 'comment.delete','uses' => 'CommentController@deleteComment']);
+	 
+	/*post routes*/
+	Route::post('/post/save',['as' => 'post.save','uses' => 'PostController@store']);
+	Route::post('/post/{post}/update',['as' => 'post.update','uses' => 'PostController@update']);
+	Route::post('/comment/{comment}/update',['as' => 'comment.update','uses' => 'CommentController@updateComment']);
+ 
+});
