@@ -106,5 +106,8 @@ Route::group(['prefix' => 'admin','before'=>'auth'],function()
 	Route::post('/post/save',['as' => 'post.save','uses' => 'PostController@store']);
 	Route::post('/post/{post}/update',['as' => 'post.update','uses' => 'PostController@update']);
 	Route::post('/comment/{comment}/update',['as' => 'comment.update','uses' => 'CommentController@updateComment']);
+	
+	/*put routes*/
+	Route::put('/post/{post}/updateStatut',['as' => 'posts.updateStatut','uses' => 'PostController@updateStatut']);
  
 });

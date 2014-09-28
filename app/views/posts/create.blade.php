@@ -9,7 +9,9 @@
 	{{ $errors->first('title', '<small class="error">:message</small>') }}
 	{{ Form::textarea('content') }}
 	{{ $errors->first('content', '<small class="error">:message</small>') }}
-	{{ Form::radio('draft', 'draft', false) }}
+	{{ Form::label('draft', "Enregistrer en tant que brouillon") }}
+	{{ Form::select('draft', [false => 'Prêt à publier', true => 'Enregistrer en tant que brouillon'], false) }}
+	<br>
 	{{ Form::submit('valider', array('class' => 'button tiny radius')) }}
 {{ Form::close()}}
 

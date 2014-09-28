@@ -23,6 +23,11 @@ class PostController extends BaseController
  		$this->layout->title = 'Liste des articles';
 		$this->layout->main = View::make('dash')->nest('content','posts.index',compact('posts'));
 		
+		/*$posts = Post::sortable()->get();	
+ 		$this->layout->title = 'Liste des articles';
+		$this->layout->main = View::make('dash')->nest('content','posts.index',compact('posts'));*/
+
+		
 		/*return View::make('posts.index')->with('posts', $posts);*/
 	}
 
@@ -35,7 +40,7 @@ class PostController extends BaseController
 	public function create()
 	{
 		/*return View::make('posts.create');*/
-		$this->layout->title = 'New Post';
+		$this->layout->title = 'Nouvel article';
 		$this->layout->main = View::make('dash')->nest('content', 'posts.create');
 	}
 
@@ -61,7 +66,7 @@ class PostController extends BaseController
 		$title = Input::get('title');
 		$content = Input::get('content');
 		$slug = Str::slug($title);
-		$draft = Input::get('draft');
+		$draft = Input::get('draft'); /*(Input::has('draft')) ? 1 : 0;*/
 		$post = new Post();
 		$post->title = $title;
 		/* RAJOUTER PUBLICATION OU BROUILLON*/
@@ -105,7 +110,9 @@ class PostController extends BaseController
 	public function edit($id)
 	{
 		$post = Post::findOrFail($id);
-		return View::make('posts.edit')->withPost($post);
+		/*return View::make('posts.edit')->withPost($post);*/
+		$this->layout->title = "Modifier l'article";
+		$this->layout->main = View::make('dash')->nest('content', 'posts.edit', compact('post'));
 	}
 	
 
@@ -133,15 +140,24 @@ class PostController extends BaseController
 		$title = Input::get('title');
 		$content = Input::get('content');
 		$slug = Str::slug($title);
+		$draft = Input::get('draft');
 		$post = Post::findOrFail($id);
 		$post->title = $title;
 		$post->content = $content;
 		$post->slug = $slug;
+		$post->draft = $draft;
 		$post->update();
 		return Redirect::route('posts.index')->withMessage("L'article a été modifié");
 	}
+	
+	public function updateStatut(Post $post)
+	{
 
-
+		$post->draft = Input::get('draft');
+		$post->update();
+		return Redirect::route('posts.index')->withMessage("L'article a été modifié");
+	}
+	
 	/**
 	 * Remove the specified resource from storage.
 	 *
