@@ -4,10 +4,10 @@
 </h2>
 <hr>
 {{ Form::open( array('route' => 'posts.store') )}}
-	{{ Form::label('title', "Titre de l'article") }}
+	{{ Form::label('title') }}
 	{{ Form::text('title') }}
 	{{ $errors->first('title', '<small class="error">:message</small>') }}
-	{{ Form::textarea('content','',array('class' => 'editable')) }}
+	{{ Form::textarea('content','',array('class' => 'ContentEditable')) }}
 	{{ $errors->first('content', '<small class="error">:message</small>') }}
 	{{ Form::select('draft', [false => 'Prêt à publier', true => 'Enregistrer en tant que brouillon'], false) }}
 	<br>

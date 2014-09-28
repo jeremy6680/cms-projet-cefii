@@ -12,8 +12,14 @@ $(document).ready(function() {
 		
 		
 	// Editor
-			$('.titleeditable').editable({height: 60});
-            $('.editable').editable({height: 400});
+			$('.TitleEditable').editable({
+				height: 60
+			});
+			
+            $('.ContentEditable').editable({
+            	height: 400,
+            	placeholder: "Entrez le contenu de votre article ici..."
+            });
 });
 
 
