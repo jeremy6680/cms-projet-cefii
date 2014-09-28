@@ -1,4 +1,4 @@
-<h2 class="comment-listings">Comment listings</h2><hr>
+<h2 class="comment-listings">Liste des commentaires</h2><hr>
 <table>
     <thead>
     <tr>
@@ -27,4 +27,4 @@
     @endforeach
     </tbody>
 </table>
-{{$comments->links()}}
+{{-- $comments->links() --}}

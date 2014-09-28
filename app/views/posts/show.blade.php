@@ -4,7 +4,7 @@
             {{$post->title}}
         </h1>
         <div class="clearfix">
-            <span class="left date">{{explode(' ',$post->created_at)[0]}}</span>
+            <span class="left date">{{ $post->created_at->format('d/m/Y') }}</span>
             <span class="right label">{{HTML::link('#reply','Reply',['style'=>'color:inherit'])}} </span>
         </div>
     </header>
@@ -24,7 +24,7 @@
                     <article>
                         <header>
                             <div class="clearfix">
-                                <span class="right date">{{explode(' ',$comment->created_at)[0]}}</span>
+                                <span class="right date">{{ $comment->created_at->format('d/m/Y') }}</span>
                                 <span class="left commenter">{{link_to_route('posts.show',$comment->commenter,$post->id)}}</span>
                             </div>
                         </header>
@@ -42,5 +42,5 @@
         <h2>No Comments on {{$post->title}}</h2>
     @endif
     <!--comment form -->
-    {{-- @include('comments.commentform') --}}
+    @include('comments.commentform') 
 </section>

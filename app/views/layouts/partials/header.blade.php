@@ -27,6 +27,18 @@
 					</ul>
 					<ul class="right">
 						@if(Auth::check())
+							<li class="{{ (strpos(URL::current(),route('user.index'))!== false) ? 'active' : '' }}">
+								{{HTML::linkRoute('user.index','Utilisateurs')}}
+							</li >
+							<li class="{{ (strpos(URL::current(),route('posts.create'))!== false) ? 'active' : '' }}">
+								{{HTML::linkRoute('posts.create','Nouvel article')}}
+							</li >
+							<li class="{{ (strpos(URL::current(),route('posts.index'))!== false) ? 'active' : '' }}">
+								{{HTML::linkRoute('posts.index','Liste des articles')}}
+							</li>
+							<li class="{{ (strpos(URL::current(),route('comment.list'))!== false) ? 'active' : '' }}">
+								{{HTML::linkRoute('comment.list','Liste des commentaires')}}
+							</li>
 							<li class="{{ (strpos(URL::current(), URL::to('admin/dash-board'))!== false) ? 'active' : '' }}">
 								{{HTML::link('admin/dash-board','Dashboard')}}
 							</li>

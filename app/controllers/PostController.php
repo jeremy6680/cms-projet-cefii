@@ -22,7 +22,7 @@ class PostController extends BaseController
 		
  		$this->layout->title = 'Liste des articles';
 		$this->layout->main = View::make('dash')->nest('content','posts.index',compact('posts'));*/
-		
+
 
     	$sortby = Input::get('sortby');
 	    $order = Input::get('order');
@@ -30,7 +30,7 @@ class PostController extends BaseController
 	    if ($sortby && $order) {
 	        $posts = Post::orderBy($sortby, $order)->get();
 	    } else {
-	        $posts = Post::all();
+	        $posts = Post::orderBy('created_at', 'DESC')->get();
 	    }
 	 
 	 	$this->layout->title = 'Liste des articles';

@@ -4,7 +4,7 @@
     <table>
     	<thead>
     		<tr>
-			    <th width="240">
+			    <th>
 			    @if ($sortby == 'title' && $order == 'asc') {{
                         link_to_action(
                             'PostController@index',
@@ -27,7 +27,7 @@
                     }}
                 @endif
 			    </th>
-			    <th width="80">
+			    <th>
 			    @if ($sortby == 'created_at' && $order == 'asc') {{
                         link_to_action(
                             'PostController@index',
@@ -50,7 +50,7 @@
                     }}
                 @endif
 			    </th>
-			    <th width="100">
+			    <th>
 			    @if ($sortby == 'draft' && $order == 'asc') {{
                         link_to_action(
                             'PostController@index',
@@ -73,16 +73,16 @@
                     }}
                 @endif
 			    </th>
-			    <th width="80">Auteur</th>
-			    <th width="80">Modifier</th>
-			    <th width="80">Supprimer</th>
-			    <th width="80">Voir</th>
+			    <th>Auteur</th>
+			    <th>Modifier</th>
+			    <th>Supprimer</th>
+			    <th>Voir</th>
     		</tr>
     	</thead>
 	    <tbody>
 	    @foreach($posts as $post)
 	    	<tr>
-			    <td>{{$post->title}}</td>
+			    <td>{{HTML::linkRoute('posts.edit', $post->title, $post->id)}}</td>
 			    <td>{{$post->created_at->format('d/m/Y')}}</td>
 			    <td>
             {{ Form::model($post, array('route' => ['posts.updateStatut', $post->id], 'method' => 'PUT') ) }}

@@ -1,6 +1,3 @@
-@extends('templates.default')
-
-@section('content')
 
 		@if(Session::has('ok'))
 			<div data-alert class="alert-box success radius">{{ Session::get('ok') }}</div>
@@ -36,6 +33,4 @@
 			</table>
 
 		{{ link_to_route('user.create', 'Ajouter un utilisateur', null, array('class' => 'button secondary small radius right')) }}
-		{{ $users->links(); }}
-
-@stop
+		{{-- $users->links(); --}}
