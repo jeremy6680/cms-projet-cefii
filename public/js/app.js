@@ -9,4 +9,10 @@ $(document).ready(function() {
 				}
 			}
 		});
+		
+		
+		
+var htmleditor = $.UIkit.htmleditor(textarea, { /* options */ });
 });
+
+
