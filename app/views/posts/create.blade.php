@@ -7,7 +7,7 @@
 	{{ Form::label('title', "Titre de l'article") }}
 	{{ Form::text('title') }}
 	{{ $errors->first('title', '<small class="error">:message</small>') }}
-	{{ Form::textarea('content') }}
+	{{ Form::textarea('content','',array('class' => 'editable')) }}
 	{{ $errors->first('content', '<small class="error">:message</small>') }}
 	{{ Form::select('draft', [false => 'Prêt à publier', true => 'Enregistrer en tant que brouillon'], false) }}
 	<br>

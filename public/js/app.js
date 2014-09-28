@@ -11,10 +11,9 @@ $(document).ready(function() {
 		});
 		
 		
-		
-    var editor = new Editor('.editable', {
-            buttons: ['b', 'i', 'blockquote', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'a', 'cancel']
-        });
+	// Editor
+			$('.titleeditable').editable({height: 60});
+            $('.editable').editable({height: 400});
 });
 
 
