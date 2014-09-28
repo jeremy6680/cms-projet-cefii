@@ -18,17 +18,23 @@ class PostController extends BaseController
 	 */
 	public function index() 
 	{
-		$posts = Post::all();
+		/*$posts = Post::all();
 		
- 		$this->layout->title = 'Liste des articles';
-		$this->layout->main = View::make('dash')->nest('content','posts.index',compact('posts'));
-		
-		/*$posts = Post::sortable()->get();	
  		$this->layout->title = 'Liste des articles';
 		$this->layout->main = View::make('dash')->nest('content','posts.index',compact('posts'));*/
-
 		
-		/*return View::make('posts.index')->with('posts', $posts);*/
+
+    	$sortby = Input::get('sortby');
+	    $order = Input::get('order');
+	 
+	    if ($sortby && $order) {
+	        $posts = Post::orderBy($sortby, $order)->get();
+	    } else {
+	        $posts = Post::all();
+	    }
+	 
+	 	$this->layout->title = 'Liste des articles';
+		$this->layout->main = View::make('dash')->nest('content','posts.index',compact('posts', 'sortby', 'order'));
 	}
 
 
