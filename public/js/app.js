@@ -12,7 +12,9 @@ $(document).ready(function() {
 		
 		
 		
-var htmleditor = $.UIkit.htmleditor(textarea, { /* options */ });
+    var editor = new Editor('.editable', {
+            buttons: ['b', 'i', 'blockquote', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'a', 'cancel']
+        });
 });
 
 

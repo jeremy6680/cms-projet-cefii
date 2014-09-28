@@ -6,26 +6,10 @@
 	@section('title')
 		<title>{{{$title}}}</title>
 	@show
-	{{ HTML::script('js/vendor/custom.modernizr.js') }}
+	{{ HTML::script('js/vendor/modernizr.js') }}
 	{{ HTML::style('css/foundation.css') }}
-	{{ HTML::style('css/uikit.min.css') }}
 	{{ HTML::style('css/custom.css') }}
-
-	{{ HTML::script('js/vendor/jquery.js') }}
-	{{ HTML::script('js/vendor/uikit.min.js') }}
-
-	
-        <!-- Codemirror and marked dependencies -->
-        {{ HTML::style('codemirror/lib/codemirror.css') }}
-        {{ HTML::script('codemirror/lib/codemirror.js') }}
-        {{ HTML::script('codemirror/mode/markdown/markdown.js') }}
-        {{ HTML::script('codemirror/addon/mode/overlay.js') }}
-        {{ HTML::script('codemirror/mode/xml/xml.js') }}
-        {{ HTML::script('codemirror/mode/gfm/gfm.js') }}
-        {{ HTML::script('js/vendor/marked.js') }}
-        {{ HTML::script('js/vendor/htmleditor.js') }}
-        {{ HTML::script('js/app.js') }}
-       
+     
 </head>
 <body>
 <div class="row main">
