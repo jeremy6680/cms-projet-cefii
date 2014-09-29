@@ -81,8 +81,9 @@ $view->recentPosts = Post::orderBy('id','desc')->take(5)->get();
 
 
 /* Model Bindings */
-Route::model('post','Post');
+/*Route::model('post','Post');*/
 Route::model('comment','Comment');
+/*Route::model('user','User');*/
 
 /* Admin routes */
 Route::group(['prefix' => 'admin','before'=>'auth'],function()
