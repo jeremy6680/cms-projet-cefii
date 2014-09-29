@@ -1,5 +1,3 @@
-
-
 <h2 class="post-listings">Liste des articles</h2><hr>
     <table>
     	<thead>
@@ -82,16 +80,36 @@
 	    <tbody>
 	    @foreach($posts as $post)
 	    	<tr>
-			    <td>{{HTML::linkRoute('posts.edit', $post->title, $post->id)}}</td>
+			    <td>{{$post->title}}</td>
 			    <td>{{$post->created_at->format('d/m/Y')}}</td>
 			    <td>
-            {{ Form::model($post, array('route' => ['posts.updateStatut', $post->id], 'method' => 'PUT') ) }}
-            {{ Form::select('draft', [false => 'Publié', true => 'Brouillon'], $post->draft, ['style'=>'margin-bottom:0','onchange'=>'submit()'])}}
-            {{Form::close()}}
+			    	@if(Auth::user()->admin == 1)
+			            {{ Form::model($post, array('route' => ['posts.updateStatut', $post->id], 'method' => 'PUT') ) }}
+			            {{ Form::select('draft', [false => 'Publié', true => 'Brouillon'], $post->draft, ['style'=>'margin-bottom:0','onchange'=>'submit()'])}}
+			            {{Form::close()}}		    	
+			    	@elseif(Auth::user()->pseudo == $post->user->pseudo)
+			            {{ Form::model($post, array('route' => ['posts.updateStatut', $post->id], 'method' => 'PUT') ) }}
+			            {{ Form::select('draft', [false => 'Publié', true => 'Brouillon'], $post->draft, ['style'=>'margin-bottom:0','onchange'=>'submit()'])}}
+			            {{Form::close()}}
+		            @else
+		            	@if($post->draft == 0){{'Publié'}}
+		            	@else {{'Brouillon'}}
+		            	@endif
+		            @endif
             	</td>
             	<td>{{$post->user->pseudo}}</td>
-			    <td>{{HTML::linkRoute('posts.edit','Modifier',$post->id)}}</td>
-			    <td>{{HTML::linkRoute('posts.destroy','Supprimer',$post->id)}}</td>
+			    <td>
+			    	@if(Auth::user()->admin == 1) {{HTML::linkRoute('posts.edit','Modifier',$post->id)}}
+			    	@elseif(Auth::user()->pseudo == $post->user->pseudo){{HTML::linkRoute('posts.edit','Modifier',$post->id)}}
+			    	@else{{'-'}}
+			    	@endif
+			    </td>
+			    <td>
+			    	@if(Auth::user()->admin == 1){{HTML::linkRoute('posts.destroy','Supprimer',$post->id)}}
+			    	@elseif(Auth::user()->pseudo == $post->user->pseudo){{HTML::linkRoute('posts.destroy','Supprimer',$post->id)}}
+			    	@else{{'-'}}
+			    	@endif
+			    </td>
 			    <td>{{HTML::linkRoute('posts.show','Voir',$post->id,['target'=>'_blank'])}}</td>
 	    	</tr>
 	    @endforeach
