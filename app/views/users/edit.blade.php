@@ -12,9 +12,11 @@
 					  	{{ Form::email('email', $user->email, array('placeholder' => 'Email')) }}
 						<small>{{ $errors->first('email') }}</small>
 					  </div>
+					  @if(Auth::user()->admin == 1)
 						<div>
 						  {{ Form::checkbox('admin', 1, $user->admin) }} Administrateur
 						</div>
+					  @endif
 						{{ Form::submit('Envoyer', array('class' => 'button small')) }}
 					{{ Form::close() }}
 		</div>

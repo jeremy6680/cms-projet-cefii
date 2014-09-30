@@ -20,9 +20,11 @@
 					  <div>
 					  	{{ Form::password('Confirmation_mot_de_passe', array('placeholder' => 'Confirmation mot de passe')) }}
 					  </div>
+					  @if(Auth::user()->admin == 1)
 						<div>
 						  {{ Form::checkbox('admin') }} Administrateur
 						</div>
+					  @endif
 						{{ Form::submit('Envoyer', array('class' => 'button small')) }}
 					{{ Form::close() }}
 

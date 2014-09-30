@@ -33,7 +33,9 @@
 					<ul class="right">
 						@if(Auth::check())
 							<li class="{{ (strpos(URL::current(),route('user.index'))!== false) ? 'active' : '' }}">
-								{{HTML::linkRoute('user.index','Utilisateurs')}}
+								@if(Auth::user()->admin == 1){{HTML::linkRoute('user.index','Utilisateurs')}}
+								@else{{HTML::linkRoute('user.show','Mon profil',Auth::user()->id)}}
+								@endif
 							</li >
 							<li class="{{ (strpos(URL::current(),route('posts.create'))!== false) ? 'active' : '' }}">
 								{{HTML::linkRoute('posts.create','Nouvel article')}}

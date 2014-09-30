@@ -25,7 +25,10 @@ class UserController extends BaseController {
 
 	public function index()
 	{
-		return View::make('users.index', $this->user_gestion->index(4));
+		/*return View::make('users.index', $this->user_gestion->index(4));*/
+		
+	 	$this->layout->title = 'Liste des utilisateurs';
+		$this->layout->main = View::make('dash')->nest('content','users.index',$this->user_gestion->index(4));
 	}
 
 	public function create()

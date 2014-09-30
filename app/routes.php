@@ -105,11 +105,17 @@ Route::group(['prefix' => 'admin','before'=>'auth'],function()
 	Route::get('/comment/list',['as' => 'comment.list','uses' => 'CommentController@listComment']);
 	Route::get('/comment/{comment}/show',['as' => 'comment.show','uses' => 'CommentController@showComment']);
 	Route::get('/comment/{comment}/delete',['as' => 'comment.delete','uses' => 'CommentController@deleteComment']);
+	/*Route::get('/users/index',['as' => 'users.index','uses' => 'UserController@index']);
+	Route::get('/users/create',['as' => 'users.create','uses' => 'UserController@create']);
+	Route::get('/users/{user}/edit',['as' => 'users.edit','uses' => 'UserController@edit']);
+	Route::get('/users/{user}/delete',['as' => 'users.destroy','uses' => 'UserController@destroy']);*/
 	 
 	/*post routes*/
 	Route::post('/post/save',['as' => 'post.save','uses' => 'PostController@store']);
 	Route::post('/post/{post}/update',['as' => 'post.update','uses' => 'PostController@update']);
 	Route::post('/comment/{comment}/update',['as' => 'comment.update','uses' => 'CommentController@updateComment']);
+	/*Route::post('/user/save',['as' => 'user.save','uses' => 'UserController@store']);
+	Route::post('/user/{user}/update',['as' => 'user.update','uses' => 'UserController@update']);*/
 	
 	/*put routes*/
 	Route::put('/post/{post}/updateStatut',['as' => 'posts.updateStatut','uses' => 'PostController@updateStatut']);
