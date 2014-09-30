@@ -51,12 +51,16 @@ class UserController extends BaseController {
 
 	public function show($id)
 	{
-		return View::make('users.show',  $this->user_gestion->show($id));
+		/*return View::make('users.show',  $this->user_gestion->show($id));*/
+		$this->layout->title = 'Fiche utilisateur';
+		$this->layout->main = View::make('dash')->nest('content','users.show',$this->user_gestion->show($id));
 	}
 
     public function edit($id)
 	{
-		return View::make('users.edit',  $this->user_gestion->edit($id));
+		/*return View::make('users.edit',  $this->user_gestion->edit($id));*/
+		$this->layout->title = 'Modifier un utilisateur';
+		$this->layout->main = View::make('dash')->nest('content','users.edit',$this->user_gestion->edit($id));
 	}
 
 	public function update($id)

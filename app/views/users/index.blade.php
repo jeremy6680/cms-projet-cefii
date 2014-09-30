@@ -33,4 +33,4 @@
 			</table>
 
 		{{ link_to_route('user.create', 'Ajouter un utilisateur', null, array('class' => 'button secondary small radius right')) }}
-		{{-- $users->links(); --}}
+		{{ $users->links(); }}

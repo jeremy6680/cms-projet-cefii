@@ -28,9 +28,9 @@ class PostController extends BaseController
 	    $order = Input::get('order');
 	 
 	    if ($sortby && $order) {
-	        $posts = Post::orderBy($sortby, $order)->get();
+	        $posts = Post::orderBy($sortby, $order)->paginate(10);
 	    } else {
-	        $posts = Post::orderBy('created_at', 'DESC')->get();
+	        $posts = Post::orderBy('created_at', 'DESC')->paginate(10);
 	    }
 	 
 	 	$this->layout->title = 'Liste des articles';

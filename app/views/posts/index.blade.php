@@ -100,13 +100,13 @@
             	<td>{{$post->user->pseudo}}</td>
 			    <td>
 			    	@if(Auth::user()->admin == 1) {{HTML::linkRoute('posts.edit','Modifier',$post->id)}}
-			    	@elseif(Auth::user()->pseudo == $post->user->pseudo){{HTML::linkRoute('posts.edit','Modifier',$post->id)}}
+			    	@elseif(Auth::user()->pseudo == $post->user->pseudo){{HTML::linkRoute('posts.edit','Modifier')}}
 			    	@else{{'-'}}
 			    	@endif
 			    </td>
 			    <td>
-			    	@if(Auth::user()->admin == 1){{HTML::linkRoute('posts.destroy','Supprimer',$post->id)}}
-			    	@elseif(Auth::user()->pseudo == $post->user->pseudo){{HTML::linkRoute('posts.destroy','Supprimer',$post->id)}}
+			    	@if(Auth::user()->admin == 1){{HTML::linkRoute('posts.destroy','Supprimer',$post->id,array('onclick' => 'return confirm(\'Voulez-vous vraiment supprimer cet utilisateur ?\')'))}}
+			    	@elseif(Auth::user()->pseudo == $post->user->pseudo){{HTML::linkRoute('posts.destroy','Supprimer',$post->id,array('onclick' => 'return confirm(\'Voulez-vous vraiment supprimer cet utilisateur ?\')'))}}
 			    	@else{{'-'}}
 			    	@endif
 			    </td>
@@ -115,4 +115,4 @@
 	    @endforeach
 	    </tbody>
     </table>
-    {{-- $posts->links() --}}
+    {{ $posts->links() }}
