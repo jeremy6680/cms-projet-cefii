@@ -105,8 +105,8 @@
 			    	@endif
 			    </td>
 			    <td>
-			    	@if(Auth::user()->admin == 1){{HTML::linkRoute('posts.destroy','Supprimer',$post->id,array('onclick' => 'return confirm(\'Voulez-vous vraiment supprimer cet utilisateur ?\')'))}}
-			    	@elseif(Auth::user()->pseudo == $post->user->pseudo){{HTML::linkRoute('posts.destroy','Supprimer',$post->id,array('onclick' => 'return confirm(\'Voulez-vous vraiment supprimer cet utilisateur ?\')'))}}
+			    	@if(Auth::user()->admin == 1){{HTML::linkRoute('posts.destroy','Supprimer',$post->id,array('onclick' => 'return confirm(\'Voulez-vous vraiment supprimer cet article ?\')'))}}
+			    	@elseif(Auth::user()->pseudo == $post->user->pseudo){{HTML::linkRoute('posts.destroy','Supprimer',$post->id,array('onclick' => 'return confirm(\'Voulez-vous vraiment supprimer cet article ?\')'))}}
 			    	@else{{'-'}}
 			    	@endif
 			    </td>

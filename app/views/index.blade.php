@@ -1,9 +1,9 @@
 @if(!empty($notFound))
-    <p>Sorry nothing found for your query!</p>
+    <p>Désolé mais rien ne correspond à votre requête !</p>
 @else
     @foreach($posts as $post)
     <article class="post">
-    	<header class="post-header">
+    	<div class="post-header">
 	    	<h2 class="post-title">
 	    	{{link_to_route('posts.show',$post->title,$post->id)}}
 	    	</h2>
@@ -11,15 +11,15 @@
 			    <span class="left date">Publié le {{ $post->created_at->format('j F Y') }}</span>
 			    <span class="right label">{{$post->comment_count}} commentaires</span>
 	    	</div>
-    	</header>
+    	</div>
     	<div class="post-content">
 			{{ Markdown::parse(Str::limit($post->content, 300)) }}
 		    <span>{{link_to_route('posts.show',"Lire l'article en intégralité",$post->id)}}
     	</div>
-    	<footer class="post-footer">
+    	<div class="post-footer">
    			<hr>
-    	</footer>
+    	</div>
     </article>
     @endforeach
-    {{-- $posts->links() --}}
+    {{ $posts->links() }}
     @endif

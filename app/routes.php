@@ -76,7 +76,7 @@ Route::post('/post/{post}/comment',['as' => 'comment.new','uses' =>'CommentContr
 
 View::composer('sidebar', function($view)
 {
-$view->recentPosts = Post::orderBy('id','desc')->take(5)->get();
+	$view->recentPosts = Post::orderBy('id','desc')->take(5)->get();
 });
 
 

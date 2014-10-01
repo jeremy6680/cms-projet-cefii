@@ -6,21 +6,22 @@ class CommentController extends BaseController
     /* get functions */
     public function listComment()
     {
-        /*$comments = Comment::orderBy('id', 'desc')->paginate(20);
+        $comments = Comment::orderBy('id', 'desc')->paginate(20);
         $this->layout->title = 'Liste des commentaires';
-        $this->layout->main = View::make('dash')->nest('content', 'comments.list', compact('comments'));*/
-        
-    	$sortby = Input::get('sortby');
+        $this->layout->main = View::make('dash')->nest('content', 'comments.list', compact('comments'));
+		
+        /* BUG LORSQUE CE CODE EST ACTIVE (Trying to get property of non-object (View: /Users/jeremymarchandeau/Sites/projet-cms/app/views/comments/list.blade.php) ) */
+    	/*$sortby = Input::get('sortby'); 
 	    $order = Input::get('order');
 	 
 	    if ($sortby && $order) {
 	        $comments = Comment::orderBy($sortby, $order)->get();
 	    } else {
-	        $comments = Comment::orderBy('created_at', 'DESC')->get();
+	        $comments = Comment::orderBy('commenter', 'DESC')->get();
 	    }
 	 
 	 	$this->layout->title = 'Liste des commentaires';
-		$this->layout->main = View::make('dash')->nest('content','comments.list',compact('comments', 'sortby', 'order'));
+		$this->layout->main = View::make('dash')->nest('content','comments.list',compact('comments', 'sortby', 'order'));*/
     }
 
     public function newComment(Post $post)

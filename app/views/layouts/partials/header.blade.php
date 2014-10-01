@@ -16,6 +16,7 @@
      
 </head>
 <body>
+<div class="main">
 <div class="row main">
 	<div class="small-12 large-12 column" id="masthead">
 		<header>
@@ -28,7 +29,7 @@
 				</ul>
 				<section class="top-bar-section">
 					<ul class="left">
-						<li class="{{(strcmp(URL::full(), URL::to('/')) == 0) ? 'active' : ''}}"><a href="{{URL::to('/')}}">Home</a></li>
+						<li class="{{(strcmp(URL::full(), URL::to('/')) == 0) ? 'active' : ''}}"><a href="{{URL::to('/')}}">Easy Peasy <em>Lemon Squeezy</em></a></li>
 					</ul>
 					<ul class="right">
 						@if(Auth::check())
@@ -68,3 +69,4 @@
 			</div>
 		</header>
 	</div>
+</div>

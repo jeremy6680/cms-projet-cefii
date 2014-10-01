@@ -15,13 +15,13 @@
     <tr>
         <td>{{{$comment->commenter}}}</td>
         <td>{{{$comment->email}}}</td>
-        <td>{{$comment->post->title}}</td>
+        <td>{{{$comment->post->title}}}</td> <!-- BUG A RESOUDRE LORSQUE CODE grisé dans CommentController listComment est activé-->
         <td>
             {{Form::open(['route'=>['comment.update',$comment->id]])}}
             {{Form::select('status',['yes'=>'Oui','no'=>'Non'],$comment->approved,['style'=>'margin-bottom:0','onchange'=>'submit()'])}}
             {{Form::close()}}
         </td>
-        <td>{{HTML::linkRoute('comment.delete','Supprimer',$comment->id)}}</td>
+        <td>{{HTML::linkRoute('comment.delete','Supprimer',$comment->id,array('onclick' => 'return confirm(\'Voulez-vous vraiment supprimer ce commentaire ?\')'))}}</td>
         <td>{{HTML::linkRoute('comment.show','Vue rapide',$comment->id,['data-reveal-id'=>'comment-show','data-reveal-ajax'=>'true'])}}</td>
     </tr>
     @endforeach
