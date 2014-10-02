@@ -24,6 +24,10 @@ Route::get('/db', function()
 });
 */
 
+	// ===============================================
+	// BLOG PAGES ==================================
+	// ===============================================
+
 /*
  * / = home
  * /posts - all posts
@@ -31,11 +35,22 @@ Route::get('/db', function()
  * /posts/1/edit - edit and update
  * /posts/create - create new post
  */
-
+/*
+Route::get('/{category?}', [
+	'as' => 'home',
+	'uses' => 'HomeController@index'
+]);
+*/
 Route::get('/', [
 	'as' => 'home',
 	'uses' => 'HomeController@index'
 ]);
+
+Route::get('/category/{category?}', [
+	'as' => 'category-list',
+	'uses' => 'PostController@categoryList'
+]);
+
 /*
 Route::get('/posts/', [
 	'as' => 'posts',
@@ -53,9 +68,25 @@ Route::get('/create', [
 ]);
 */
 
+	// ===============================================
+	// STATIC PAGES ==================================
+	// ===============================================
+
+// about page (app/views/about.blade.php)
+Route::get('/about', array('as' => 'about', function()
+{
+	return View::make('about');
+}));
+
+// work page (app/views/contact.blade.php)
+Route::get('/contact', array('as' => 'contact', function()
+{
+	return View::make('contact');
+}));
+
 Route::resource('posts', 'PostController');
 
-Route::resource('user', 'UserController');
+Route::resource('users', 'UserController');
 
 Route::controller('auth', 'AuthController');
 
@@ -85,18 +116,22 @@ View::composer('sidebar', function($view)
 Route::model('comment','Comment');
 /*Route::model('user','User');*/
 
+	// ===============================================
+	// ADMIN SECTION =================================
+	// ===============================================
+
 /* Admin routes */
 Route::group(['prefix' => 'admin','before'=>'auth'],function()
 {
 	/*get routes*/
-	Route::get('dash-board',function()
+	Route::get('/',array('as' => 'admin', function()
 	{
 		$layout = View::make('layouts.master');
 		$layout->title = 'DashBoard';
 		$layout->main = View::make('dash')->with('content','Hi admin, Welcome to Dashboard!');
 		return $layout;
 	 
-	});
+	}));
 	
 	Route::get('/posts/index',['as' => 'posts.index','uses' => 'PostController@index']);
 	Route::get('/posts/create',['as' => 'posts.create','uses' => 'PostController@create']);
@@ -105,19 +140,33 @@ Route::group(['prefix' => 'admin','before'=>'auth'],function()
 	Route::get('/comment/list',['as' => 'comment.list','uses' => 'CommentController@listComment']);
 	Route::get('/comment/{comment}/show',['as' => 'comment.show','uses' => 'CommentController@showComment']);
 	Route::get('/comment/{comment}/delete',['as' => 'comment.delete','uses' => 'CommentController@deleteComment']);
-	/*Route::get('/users/index',['as' => 'users.index','uses' => 'UserController@index']);
+	/*Route::get('/users',['as' => 'users.index','uses' => 'UserController@index']);
 	Route::get('/users/create',['as' => 'users.create','uses' => 'UserController@create']);
 	Route::get('/users/{user}/edit',['as' => 'users.edit','uses' => 'UserController@edit']);
-	Route::get('/users/{user}/delete',['as' => 'users.destroy','uses' => 'UserController@destroy']);*/
-	 
+	Route::get('/users/{user}/show',['as' => 'users.show','uses' => 'UserController@show']);
+	Route::get('/users/{user}/delete',['as' => 'users.destroy','uses' => 'UserController@destroy']);
+	*/
 	/*post routes*/
 	Route::post('/post/save',['as' => 'post.save','uses' => 'PostController@store']);
 	Route::post('/post/{post}/update',['as' => 'post.update','uses' => 'PostController@update']);
 	Route::post('/comment/{comment}/update',['as' => 'comment.update','uses' => 'CommentController@updateComment']);
-	/*Route::post('/user/save',['as' => 'user.save','uses' => 'UserController@store']);
-	Route::post('/user/{user}/update',['as' => 'user.update','uses' => 'UserController@update']);*/
+	/*Route::post('/users/save',['as' => 'users.save','uses' => 'UserController@store']);*/
 	
 	/*put routes*/
 	Route::put('/post/{post}/updateStatut',['as' => 'posts.updateStatut','uses' => 'PostController@updateStatut']);
+	/*Route::put('/users/{user}/update',['as' => 'users.update','uses' => 'UserController@update']);*/
+	
+	
+	// ===============================================
+	// 404 ===========================================
+	// ===============================================
+
+	App::missing(function($exception)
+	{
+
+		// shows an error page (app/views/error.blade.php)
+		// returns a page not found error
+		return Response::view('error', array(), 404);
+	});
  
 });

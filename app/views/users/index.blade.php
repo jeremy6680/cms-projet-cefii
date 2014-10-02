@@ -20,10 +20,10 @@
 				  @foreach ($users as $user)
 				    <td>{{ $user->id }}</td>
 				    <td><strong>{{ $user->pseudo }}</strong></td>
-				    <td>{{ link_to_route('user.show', 'Voir', array($user->id), array('class' => 'button success small radius')) }}</td>
-				    <td>{{ link_to_route('user.edit', 'Modifier', array($user->id), array('class' => 'button small radius')) }}</td>
+				    <td>{{ link_to_route('users.show', 'Voir', array($user->id), array('class' => 'button success small radius')) }}</td>
+				    <td>{{ link_to_route('users.edit', 'Modifier', array($user->id), array('class' => 'button small radius')) }}</td>
 				    <td>
-							{{ Form::open(array('method' => 'DELETE', 'route' => array('user.destroy', $user->id))) }}
+							{{ Form::open(array('method' => 'DELETE', 'route' => array('users.destroy', $user->id))) }}
 								{{ Form::submit('Supprimer', array('class' => 'button alert small radius', 'onclick' => 'return confirm(\'Voulez-vous vraiment supprimer cet utilisateur ?\')')) }}
 							{{ Form::close() }}
 				    </td>
@@ -32,5 +32,5 @@
 	  		</tbody>
 			</table>
 
-		{{ link_to_route('user.create', 'Ajouter un utilisateur', null, array('class' => 'button secondary small radius right')) }}
+		{{ link_to_route('users.create', 'Ajouter un utilisateur', null, array('class' => 'button secondary small radius right')) }}
 		{{ $users->links(); }}

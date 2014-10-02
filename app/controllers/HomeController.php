@@ -14,13 +14,12 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
-
+	
 	public function index()
 	{
 		$posts = Post::where('draft', '=', 0)->orderBy('created_at', 'desc')->paginate(10); 
 		$this->layout->title = 'Page d\'accueil | My Blog';
 		$this->layout->main = View::make('home')->nest('content','index',compact('posts'));
-		/*return View::make('home')->with('posts', $posts);*/
 	}
-
+	
 }

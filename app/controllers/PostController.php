@@ -36,6 +36,18 @@ class PostController extends BaseController
 	 	$this->layout->title = 'Liste des articles';
 		$this->layout->main = View::make('dash')->nest('content','posts.index',compact('posts', 'sortby', 'order'));
 	}
+	
+	
+	public function categoryList($category = null)
+	{
+		if ($category)
+			$posts = Post::where('category', '=', $category)->where('draft', '=', 0)->orderBy('created_at', 'desc')->paginate(10);
+		else
+			$posts = Post::where('draft', '=', 0)->orderBy('created_at', 'desc')->paginate(10); 
+
+		$this->layout->title = 'Liste de la catégorie';
+		$this->layout->main = View::make('home')->nest('content','index',compact('posts'));
+	}
 
 
 	/**
@@ -73,6 +85,7 @@ class PostController extends BaseController
 		$content = Input::get('content');
 		$slug = Str::slug($title);
 		$draft = Input::get('draft'); /*(Input::has('draft')) ? 1 : 0;*/
+		$category = Input::get('category');
 		$post = new Post();
 		$post->title = $title;
 		/* RAJOUTER PUBLICATION OU BROUILLON*/
@@ -80,6 +93,7 @@ class PostController extends BaseController
 		$post->slug = $slug;
 		$post->draft = $draft;
 		$post->user_id = Auth::user()->id;
+		$post->category = $category;
 		$post->save();
 		return Redirect::route('posts.index')->withMessage("L'article a été créé");
 	}
@@ -147,11 +161,13 @@ class PostController extends BaseController
 		$content = Input::get('content');
 		$slug = Str::slug($title);
 		$draft = Input::get('draft');
+		$category = Input::get('category');
 		$post = Post::findOrFail($id);
 		$post->title = $title;
 		$post->content = $content;
 		$post->slug = $slug;
 		$post->draft = $draft;
+		$post->category = $category;
 		$post->update();
 		return Redirect::route('posts.index')->withMessage("L'article a été modifié");
 	}

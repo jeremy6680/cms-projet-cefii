@@ -33,9 +33,9 @@
 					</ul>
 					<ul class="right">
 						@if(Auth::check())
-							<li class="{{ (strpos(URL::current(),route('user.index'))!== false) ? 'active' : '' }}">
-								@if(Auth::user()->admin == 1){{HTML::linkRoute('user.index','Utilisateurs')}}
-								@else{{HTML::linkRoute('user.show','Mon profil',Auth::user()->id)}}
+							<li class="{{ (strpos(URL::current(),route('users.index'))!== false) ? 'active' : '' }}">
+								@if(Auth::user()->admin == 1){{HTML::linkRoute('users.index','Utilisateurs')}}
+								@else{{HTML::linkRoute('users.show','Mon profil',Auth::user()->id)}}
 								@endif
 							</li >
 							<li class="{{ (strpos(URL::current(),route('posts.create'))!== false) ? 'active' : '' }}">
@@ -48,7 +48,7 @@
 								{{HTML::linkRoute('comment.list','Liste des commentaires')}}
 							</li>
 							<li class="{{ (strpos(URL::current(), URL::to('admin/dash-board'))!== false) ? 'active' : '' }}">
-								{{HTML::link('admin/dash-board','Dashboard')}}
+								{{HTML::linkRoute('admin','Dashboard')}}
 							</li>
 							<li class="{{ (strpos(URL::current(), URL::to('logout'))!== false) ? 'active' : '' }}" >
 								{{HTML::link('auth/logout','Se déconnecter')}}

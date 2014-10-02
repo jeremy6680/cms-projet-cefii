@@ -66,12 +66,12 @@ class UserController extends BaseController {
 	public function update($id)
 	{
 		if ($this->update_validation->fails($id)) {
-		  return Redirect::route('user.edit', array($id))
+		  return Redirect::route('users.edit', array($id))
 		  ->withInput()
 		  ->withErrors($this->update_validation->errors());
 		} else {
 			$this->user_gestion->update($id);
-			return Redirect::route('user.index')
+			return Redirect::route('users.index')
 			->with('ok','L\'utilisateur a bien été modifié.');
 		}		
 	}

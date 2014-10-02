@@ -3,7 +3,7 @@
 @section('content')
 		<div class="panel callout radius">	
 			<h4>Modification d'un utilisateur</h4>
-					{{ Form::open(array('url' => 'user/' . $user->id, 'method' => 'put')) }}	
+					{{ Form::open(array('url' => 'users/' . $user->id, 'method' => 'put')) }}	
 					  <div class="{{ $errors->has('pseudo') ? 'error' : '' }}">
 					  	{{ Form::text('pseudo', $user->pseudo, array('placeholder' => 'Pseudo')) }}
 					  	<small>{{ $errors->first('pseudo') }}</small>
