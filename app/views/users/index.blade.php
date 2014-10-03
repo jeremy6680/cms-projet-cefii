@@ -4,7 +4,7 @@
 		@endif
 
 
-				<h3>Liste des utilisateurs</h3>
+				<h2>Liste des utilisateurs</h2>
 
 			<table>
 				<thead>

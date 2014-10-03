@@ -127,9 +127,9 @@ class PostController extends BaseController
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit(Post $post)
 	{
-		$post = Post::findOrFail($id);
+		/*$post = Post::findOrFail($id);*/
 		/*return View::make('posts.edit')->withPost($post);*/
 		$this->layout->title = "Modifier l'article";
 		$this->layout->main = View::make('dash')->nest('content', 'posts.edit', compact('post'));
@@ -186,10 +186,10 @@ class PostController extends BaseController
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(Post $post)
 	{
-		$post = Post::findOrFail($id)->delete();
-		
+		/*$post = Post::findOrFail($id)->delete();*/
+		$post->delete();
 		return Redirect::route('posts.index')->withMessage("L'article a été supprimé");
 	}
 }

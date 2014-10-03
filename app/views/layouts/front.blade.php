@@ -61,7 +61,37 @@
 					</ul>
 				</section>
 			</nav>
-
+			<div class="sub-header">
+				<hgroup>
+					<h1>{{HTML::link('/','My Blog')}}</h1>
+					<h2>Coucou, voici le front</h2>
+				</hgroup>
+			</div>
 		</header>
 	</div>
 </div>
+
+@if (Session::has('message'))
+<div class="alert-box success">
+	{{ Session::get('message') }}	
+</div>
+@endif
+
+ <div class="row">
+{{$main}}
+</div>
+
+	<div class="row">
+		<div class="small-12 large-12 column">
+			<footer class="site-footer"></footer>
+		</div>
+	</div>
+</div>
+
+    {{ HTML::script('js/foundation.min.js') }}
+    {{ HTML::script('js/app.js') }}
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>

@@ -5,7 +5,7 @@
         </h1>
         <div class="clearfix">
             <span class="left date">{{ $post->created_at->format('d/m/Y') }}</span>
-            <span class="right label">{{HTML::link('#reply','Reply',['style'=>'color:inherit'])}} </span>
+            <span class="right label">{{HTML::link('#reply','Répondre',['style'=>'color:inherit'])}} </span>
         </div>
     </header>
     <div class="post-content">
@@ -17,7 +17,7 @@
 </article>
 <section class="comments">
     @if(!$comments->isEmpty())
-        <h2>Comments on {{$post->title}}</h2>
+        <h3>Commentaires sur {{$post->title}}</h3>
         <ul>
             @foreach($comments as $comment)
                 <li>
@@ -39,7 +39,7 @@
             @endforeach
         </ul>
     @else
-        <h2>No Comments on {{$post->title}}</h2>
+        <h3>Aucune commentaire sur {{$post->title}}</h3>
     @endif
     <!--comment form -->
     @include('comments.commentform') 

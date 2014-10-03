@@ -112,7 +112,7 @@ View::composer('sidebar', function($view)
 
 
 /* Model Bindings */
-/*Route::model('post','Post');*/
+Route::model('post','Post');
 Route::model('comment','Comment');
 /*Route::model('user','User');*/
 

@@ -1,5 +1,5 @@
 <div id="reply">
-    <h2>Leave a Reply</h2>
+    <h4>Laisser un commentaire</h4>
     @if(Session::has('success'))
         <div data-alert class="alert-box round">
             {{Session::get('success')}}
@@ -9,19 +9,27 @@
     {{ Form::open(['route'=>['comment.new',$post->id]]) }}
         <div class="row">
             <div class="small-5 large-5 column">
-                {{ Form::label('commenter','Name:') }}
+            @if(Auth::check())
+            	{{ Form::hidden('commenter', Auth::user()->pseudo) }}
+            @else
+                {{ Form::label('commenter','Pseudo :') }}
                 {{ Form::text('commenter',Input::old('commenter')) }}
+            @endif
             </div>
         </div>
         <div class="row">
             <div class="small-5 large-5 column">
-                {{ Form::label('email','Email:') }}
+            @if(Auth::check())
+            	{{ Form::hidden('email', Auth::user()->email) }}
+            @else
+                {{ Form::label('email','Email :') }}
                 {{ Form::text('email',Input::old('email')) }}
+            @endif
             </div>
         </div>
         <div class="row">
             <div class="small-7 large-7 column">
-                {{ Form::label('comment','Comment:') }}
+                {{ Form::label('comment','Commentaire :') }}
                 {{ Form::textarea('comment',Input::old('comment'),['rows'=>5]) }}
             </div>
         </div>
