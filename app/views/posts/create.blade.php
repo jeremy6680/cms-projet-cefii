@@ -1,6 +1,6 @@
 <h2 class="new-post">
     Ajouter un nouvel article
-    <span class="right">{{ HTML::link('admin/dash-board','Annuler',['class' => 'button tiny radius']) }}</span>
+    <span class="right">{{ HTML::link('admin/','Annuler',['class' => 'button tiny radius']) }}</span>
 </h2>
 <hr>
 {{ Form::open( array('route' => 'posts.store') )}}

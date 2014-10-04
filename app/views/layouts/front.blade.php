@@ -31,7 +31,9 @@
 					<ul class="left">
 						<li class="{{(strcmp(URL::full(), URL::to('/')) == 0) ? 'active' : ''}}"><a href="{{URL::to('/')}}">Easy Peasy <em>Lemon Squeezy</em></a></li>
 					</ul>
-					<ul class="right">
+					@include('menu')
+					<!--
+						<ul class="right">
 						@if(Auth::check())
 							<li class="{{ (strpos(URL::current(),route('users.index'))!== false) ? 'active' : '' }}">
 								@if(Auth::user()->admin == 1){{HTML::linkRoute('users.index','Utilisateurs')}}
@@ -59,6 +61,7 @@
 							</li>
 						@endif
 					</ul>
+				-->
 				</section>
 			</nav>
 			<div class="sub-header">

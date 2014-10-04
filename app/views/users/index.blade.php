@@ -3,8 +3,8 @@
 			<div data-alert class="alert-box success radius">{{ Session::get('ok') }}</div>
 		@endif
 
-
-				<h2>Liste des utilisateurs</h2>
+				{{ link_to_route('users.create', 'Ajouter', null, array('class' => 'button secondary small radius right')) }}
+				<h2>Liste des utilisateurs</h2><hr>
 
 			<table>
 				<thead>
@@ -32,5 +32,4 @@
 	  		</tbody>
 			</table>
 
-		{{ link_to_route('users.create', 'Ajouter un utilisateur', null, array('class' => 'button secondary small radius right')) }}
 		{{ $users->links(); }}

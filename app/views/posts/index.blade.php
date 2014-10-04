@@ -1,3 +1,4 @@
+{{ link_to_route('posts.create', 'Ajouter', null, array('class' => 'button secondary small radius right')) }}
 <h2 class="post-listings">Liste des articles</h2><hr>
     <table>
     	<thead>

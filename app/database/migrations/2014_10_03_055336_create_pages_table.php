@@ -17,7 +17,7 @@ class CreatePagesTable extends Migration {
 			$table->string('title', 200)->unique();
 			$table->string('slug', 400)->unique();
 			$table->boolean('draft');
-			$table->text('body');
+			$table->text('content');
 			$table->string('meta_title', 65)->unique()->default('');
 			$table->string('meta_description', 156)->unique()->default('');
 			$table->timestamps();

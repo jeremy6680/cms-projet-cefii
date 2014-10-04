@@ -45,12 +45,12 @@ Route::get('/', [
 	'as' => 'home',
 	'uses' => 'HomeController@index'
 ]);
-
+/*
 Route::get('/{page?}', [
 	'as' => 'page',
 	'uses' => 'HomeController@displayPage'
 ]);
-
+*/
 Route::get('/category/{category?}', [
 	'as' => 'category-list',
 	'uses' => 'PostController@categoryList'
@@ -115,11 +115,17 @@ View::composer('sidebar', function($view)
 	$view->recentPosts = Post::orderBy('id','desc')->take(5)->get();
 });
 
+View::composer('menu', function($view)
+{
+	$view->menuItems = Page::all();
+});
+
 
 /* Model Bindings */
 Route::model('post','Post');
 Route::model('comment','Comment');
 Route::model('pages','Page');
+Route::model('menu','Menu');
 /*Route::model('user','User');*/
 
 	// ===============================================
@@ -138,6 +144,8 @@ Route::group(['prefix' => 'admin','before'=>'auth'],function()
 		return $layout;
 	 
 	}));
+	Route::resource('menu', 'MenuController',
+                array('only' => array('index', 'edit', 'update')));
 	Route::resource('pages', 'PageController');
 	Route::get('/posts/index',['as' => 'posts.index','uses' => 'PostController@index']);
 	Route::get('/posts/create',['as' => 'posts.create','uses' => 'PostController@create']);
