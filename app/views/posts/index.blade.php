@@ -6,7 +6,7 @@
 			    @if ($sortby == 'title' && $order == 'asc') {{
                         link_to_action(
                             'PostController@index',
-                            'Title',
+                            'Titre',
                             array(
                                 'sortby' => 'title',
                                 'order' => 'desc'
@@ -16,7 +16,7 @@
                     @else {{
                         link_to_action(
                             'PostController@index',
-                            'Title',
+                            'Titre',
                             array(
                                 'sortby' => 'title',
                                 'order' => 'asc'

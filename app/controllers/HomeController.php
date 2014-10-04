@@ -24,4 +24,11 @@ class HomeController extends BaseController {
 		$this->layout->main = View::make('home')->nest('content','index',compact('posts'));
 	}
 	
+	public function displayPage($id)
+	{
+		$page = Page::findOrFail($id);
+		$this->layout->title = $page->title;
+		$this->layout->main = View::make('home')->nest('content', 'pages.show', compact('page'));
+	}
+	
 }

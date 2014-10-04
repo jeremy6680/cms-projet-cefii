@@ -46,6 +46,11 @@ Route::get('/', [
 	'uses' => 'HomeController@index'
 ]);
 
+Route::get('/{page?}', [
+	'as' => 'page',
+	'uses' => 'HomeController@displayPage'
+]);
+
 Route::get('/category/{category?}', [
 	'as' => 'category-list',
 	'uses' => 'PostController@categoryList'
@@ -114,6 +119,7 @@ View::composer('sidebar', function($view)
 /* Model Bindings */
 Route::model('post','Post');
 Route::model('comment','Comment');
+Route::model('pages','Page');
 /*Route::model('user','User');*/
 
 	// ===============================================
@@ -132,7 +138,7 @@ Route::group(['prefix' => 'admin','before'=>'auth'],function()
 		return $layout;
 	 
 	}));
-	
+	Route::resource('pages', 'PageController');
 	Route::get('/posts/index',['as' => 'posts.index','uses' => 'PostController@index']);
 	Route::get('/posts/create',['as' => 'posts.create','uses' => 'PostController@create']);
 	Route::get('/posts/{post}/edit',['as' => 'posts.edit','uses' => 'PostController@edit']);
@@ -154,6 +160,7 @@ Route::group(['prefix' => 'admin','before'=>'auth'],function()
 	
 	/*put routes*/
 	Route::put('/post/{post}/updateStatut',['as' => 'posts.updateStatut','uses' => 'PostController@updateStatut']);
+	Route::put('/page/{page}/updateStatut',['as' => 'pages.updateStatut','uses' => 'PageController@updateStatut']);
 	/*Route::put('/users/{user}/update',['as' => 'users.update','uses' => 'UserController@update']);*/
 	
 	
@@ -161,12 +168,14 @@ Route::group(['prefix' => 'admin','before'=>'auth'],function()
 	// 404 ===========================================
 	// ===============================================
 
-	App::missing(function($exception)
-	{
+App::missing(function($exception)
+{
 
-		// shows an error page (app/views/error.blade.php)
-		// returns a page not found error
-		return Response::view('error', array(), 404);
-	});
+	// shows an error page (app/views/error.blade.php)
+	// returns a page not found error
+	return Response::view('error', array(), 404);
+});
+
+
  
 });
