@@ -168,7 +168,7 @@ Route::group(['prefix' => 'admin','before'=>'auth'],function()
 	
 	/*put routes*/
 	Route::put('/post/{post}/updateStatut',['as' => 'posts.updateStatut','uses' => 'PostController@updateStatut']);
-	Route::put('/page/{page}/updateStatut',['as' => 'pages.updateStatut','uses' => 'PageController@updateStatut']);
+	Route::put('/pages/{page}/updateStatut',['as' => 'pages.updateStatut','uses' => 'PageController@updateStatut']);
 	/*Route::put('/users/{user}/update',['as' => 'users.update','uses' => 'UserController@update']);*/
 
  
