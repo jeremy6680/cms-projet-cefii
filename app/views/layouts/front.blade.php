@@ -33,25 +33,8 @@
 					</ul>
 					@include('menu')
 					<!--
-						<ul class="right">
+					<ul class="right">
 						@if(Auth::check())
-							<li class="{{ (strpos(URL::current(),route('users.index'))!== false) ? 'active' : '' }}">
-								@if(Auth::user()->admin == 1){{HTML::linkRoute('users.index','Utilisateurs')}}
-								@else{{HTML::linkRoute('users.show','Mon profil',Auth::user()->id)}}
-								@endif
-							</li >
-							<li class="{{ (strpos(URL::current(),route('posts.create'))!== false) ? 'active' : '' }}">
-								{{HTML::linkRoute('posts.create','Nouvel article')}}
-							</li >
-							<li class="{{ (strpos(URL::current(),route('posts.index'))!== false) ? 'active' : '' }}">
-								{{HTML::linkRoute('posts.index','Liste des articles')}}
-							</li>
-							<li class="{{ (strpos(URL::current(),route('comment.list'))!== false) ? 'active' : '' }}">
-								{{HTML::linkRoute('comment.list','Liste des commentaires')}}
-							</li>
-							<li class="{{ (strpos(URL::current(), URL::to('admin/dash-board'))!== false) ? 'active' : '' }}">
-								{{HTML::linkRoute('admin','Dashboard')}}
-							</li>
 							<li class="{{ (strpos(URL::current(), URL::to('logout'))!== false) ? 'active' : '' }}" >
 								{{HTML::link('auth/logout','Se déconnecter')}}
 							</li>

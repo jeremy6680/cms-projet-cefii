@@ -4,7 +4,7 @@
 		<div class="panel callout radius">	
 			<h4>Ajout d'un utilisateur</h4>
 
-					{{ Form::open(array('url' => 'user', 'method' => 'post')) }}	
+					{{ Form::open(array('url' => 'admin.user', 'method' => 'post')) }}	
 					  <div class="{{ $errors->has('pseudo') ? 'error' : '' }}">
 					  	{{ Form::text('pseudo', null, array('placeholder' => 'Pseudo')) }}
 					  	<small class="{{ $errors->has('pseudo') ? 'error' : '' }}">{{ $errors->first('pseudo') }}</small>

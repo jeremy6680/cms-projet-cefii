@@ -11,9 +11,6 @@
 			<li class="{{ (strpos(URL::current(),route('admin.pages.index'))!== false) ? 'active' : '' }}">
 				{{HTML::linkRoute('admin.pages.index','Pages')}}
 			</li>
-			<li>
-				{{ link_to_route('admin.pages.create', 'Ajouter', null, array('class' => 'button tiny radius right')) }}
-			</li>
 			<hr>
 			<li class="{{ (strpos(URL::current(),route('posts.index'))!== false) ? 'active' : '' }}">
 				{{HTML::linkRoute('posts.index','Articles')}}
@@ -23,11 +20,15 @@
 				{{HTML::linkRoute('comment.list','Commentaires')}}
 			</li>
 			<hr>
-			<li class="{{ (strpos(URL::current(),route('users.index'))!== false) ? 'active' : '' }}">
-				@if(Auth::user()->admin == 1){{HTML::linkRoute('users.index','Utilisateurs')}}
-				@else{{HTML::linkRoute('users.show','Mon profil',Auth::user()->id)}}
+			<li class="{{ (strpos(URL::current(),route('admin.user.index'))!== false) ? 'active' : '' }}">
+				@if(Auth::user()->admin == 1){{HTML::linkRoute('admin.user.index','Utilisateurs')}}
+				@else{{HTML::linkRoute('admin.user.show','Mon profil',Auth::user()->id)}}
 				@endif
 			</li >
+			<hr>
+			<li class="{{ (strpos(URL::current(), URL::to('logout'))!== false) ? 'active' : '' }}" >
+				{{HTML::link('auth/logout','Se déconnecter')}}
+			</li>
 			<hr>
 		</ul>			
 </div>

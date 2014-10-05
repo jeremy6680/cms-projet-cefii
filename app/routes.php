@@ -91,7 +91,7 @@ Route::get('/contact', array('as' => 'contact', function()
 
 Route::resource('posts', 'PostController');
 
-Route::resource('users', 'UserController');
+/*Route::resource('users', 'UserController');*/
 
 Route::controller('auth', 'AuthController');
 
@@ -126,7 +126,7 @@ Route::model('post','Post');
 Route::model('comment','Comment');
 Route::model('pages','Page');
 Route::model('menuItem','MenuItem');
-/*Route::model('user','User');*/
+Route::model('user','User');
 
 	// ===============================================
 	// ADMIN SECTION =================================
@@ -146,6 +146,7 @@ Route::group(['prefix' => 'admin','before'=>'auth'],function()
 	}));
 	Route::resource('menu', 'MenuItemController');
 	Route::resource('pages', 'PageController');
+	Route::resource('user', 'UserController');
 	Route::get('/posts/index',['as' => 'posts.index','uses' => 'PostController@index']);
 	Route::get('/posts/create',['as' => 'posts.create','uses' => 'PostController@create']);
 	Route::get('/posts/{post}/edit',['as' => 'posts.edit','uses' => 'PostController@edit']);
@@ -169,7 +170,10 @@ Route::group(['prefix' => 'admin','before'=>'auth'],function()
 	Route::put('/post/{post}/updateStatut',['as' => 'posts.updateStatut','uses' => 'PostController@updateStatut']);
 	Route::put('/page/{page}/updateStatut',['as' => 'pages.updateStatut','uses' => 'PageController@updateStatut']);
 	/*Route::put('/users/{user}/update',['as' => 'users.update','uses' => 'UserController@update']);*/
-	
+
+ 
+});
+
 	
 	// ===============================================
 	// 404 ===========================================
@@ -181,8 +185,4 @@ App::missing(function($exception)
 	// shows an error page (app/views/error.blade.php)
 	// returns a page not found error
 	return Response::view('error', array(), 404);
-});
-
-
- 
 });

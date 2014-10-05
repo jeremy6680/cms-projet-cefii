@@ -39,39 +39,41 @@ class UserController extends BaseController {
 	public function store()
 	{
 		if ($this->create_validation->fails()) {
-		  return Redirect::route('user.create')
+		  return Redirect::route('admin.user.create')
 		  ->withInput()
 		  ->withErrors($this->create_validation->errors());
 		} else {
 			$this->user_gestion->store();
-			return Redirect::route('user.index')
+			return Redirect::route('admin.user.index')
 			->with('ok','L\'utilisateur a bien été créé.');
 		}		
 	}
 
-	public function show($id)
+	public function show(User $user)
 	{
 		/*return View::make('users.show',  $this->user_gestion->show($id));*/
 		$this->layout->title = 'Fiche utilisateur';
-		$this->layout->main = View::make('dash')->nest('content','users.show',$this->user_gestion->show($id));
+		/*$this->layout->main = View::make('dash')->nest('content','users.show',$this->user_gestion->show($user));*/
+		$this->layout->main = View::make('dash')->nest('content', 'users.show', compact('user'));
 	}
 
-    public function edit($id)
+    public function edit(User $user)
 	{
 		/*return View::make('users.edit',  $this->user_gestion->edit($id));*/
 		$this->layout->title = 'Modifier un utilisateur';
-		$this->layout->main = View::make('dash')->nest('content','users.edit',$this->user_gestion->edit($id));
+		/*$this->layout->main = View::make('dash')->nest('content','users.edit',$this->user_gestion->edit($id));*/
+		$this->layout->main = View::make('dash')->nest('content', 'users.edit', compact('user'));
 	}
 
 	public function update($id)
 	{
 		if ($this->update_validation->fails($id)) {
-		  return Redirect::route('users.edit', array($id))
+		  return Redirect::route('admin.user.edit', array($id))
 		  ->withInput()
 		  ->withErrors($this->update_validation->errors());
 		} else {
 			$this->user_gestion->update($id);
-			return Redirect::route('users.index')
+			return Redirect::route('admin.user.index')
 			->with('ok','L\'utilisateur a bien été modifié.');
 		}		
 	}
