@@ -3,7 +3,7 @@
     <table>
     	<thead>
     		<tr>
-			    <th>Nom</th>
+			    <th>Nom de l'onglet</th>
 			    <th>Route</th>
 			    <th>Position</th>
     		</tr>

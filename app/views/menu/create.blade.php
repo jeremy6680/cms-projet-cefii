@@ -4,15 +4,17 @@
 </h2>
 <hr>
 {{ Form::open( array('route' => 'admin.menu.store') )}}
-	{{ Form::label('name') }}
+	{{ Form::label('route', 'Vers quelle page doit mener ce lien ?') }}
+	{{ Form::select('route', array(
+		'Page' => Page::all()->lists('title', 'id'),
+		'Catégorie' => Post::distinct()->lists('category')
+		), null, ['class' => 'field']) }}
+	{{ Form::label('name', 'Quel nom souhaitez-vous afficher dans le menu pour ce lien ?') }}
 	{{ Form::text('name') }}
 	{{ $errors->first('name', '<small class="error">:message</small>') }}
 	{{ Form::label('position') }}
 	{{ Form::text('position') }}
 	{{ $errors->first('position', '<small class="error">:message</small>') }}
-	{{ Form::label('route') }}
-	{{ Form::text('route') }}
-	{{ $errors->first('route', '<small class="error">:message</small>') }}
 
 	<br>
 	{{ Form::submit('valider', array('class' => 'button tiny radius')) }}

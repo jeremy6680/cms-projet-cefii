@@ -22,13 +22,22 @@ class MenuItemController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+	
 	public function create()
 	{
 		$this->layout->title = 'Nouvel onglet pour le menu';
 		$this->layout->main = View::make('dash')->nest('content', 'menu.create');
 	}
 	
-	
+	/*
+	public function create()
+	{
+		$this->layout->title = 'Nouvel onglet pour le menu';
+		$this->layout->main = View::make('dash', array (
+            'pages' => Page::all()->lists('title','id')
+        ))->nest('content', 'menu.create');
+	}
+	*/
 	/**
 	 * Store a newly created resource in storage.
 	 *
@@ -46,7 +55,7 @@ class MenuItemController extends \BaseController {
 		// test if input fails
 		/* @TODO : Faire fonctionner le Validator de l'Update !! (a priori, problème avec méthode Edit également) */
 		if($validator->fails()) {
-			return Redirect::route('admin.menu.create', $id)->withErrors($validator)->withInput();
+			return Redirect::route('admin.menu.create')->withErrors($validator)->withInput();
 		}
 		
 		$name = Input::get('name');
