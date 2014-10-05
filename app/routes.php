@@ -45,12 +45,12 @@ Route::get('/', [
 	'as' => 'home',
 	'uses' => 'HomeController@index'
 ]);
-/*
+
 Route::get('/{page?}', [
 	'as' => 'page',
 	'uses' => 'HomeController@displayPage'
 ]);
-*/
+
 Route::get('/category/{category?}', [
 	'as' => 'category-list',
 	'uses' => 'PostController@categoryList'
@@ -117,7 +117,7 @@ View::composer('sidebar', function($view)
 
 View::composer('menu', function($view)
 {
-	$view->menuItems = Page::all();
+	$view->menuItems = MenuItem::all();
 });
 
 
@@ -125,7 +125,7 @@ View::composer('menu', function($view)
 Route::model('post','Post');
 Route::model('comment','Comment');
 Route::model('pages','Page');
-Route::model('menu','Menu');
+Route::model('menuItem','MenuItem');
 /*Route::model('user','User');*/
 
 	// ===============================================
@@ -144,8 +144,7 @@ Route::group(['prefix' => 'admin','before'=>'auth'],function()
 		return $layout;
 	 
 	}));
-	Route::resource('menu', 'MenuController',
-                array('only' => array('index', 'edit', 'update')));
+	Route::resource('menu', 'MenuItemController');
 	Route::resource('pages', 'PageController');
 	Route::get('/posts/index',['as' => 'posts.index','uses' => 'PostController@index']);
 	Route::get('/posts/create',['as' => 'posts.create','uses' => 'PostController@create']);

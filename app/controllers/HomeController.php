@@ -25,11 +25,19 @@ class HomeController extends BaseController {
 	}
 	
 	/*
+	public function displayMenu()
+	{
+		$menuItems = MenuItem::all();
+		$this->layout->main = View::make('dash')->nest('content','menu.index',compact('menuItems'));		
+	}
+	*/
+	
+	
 	public function displayPage($id)
 	{
 		$page = Page::findOrFail($id);
 		$this->layout->title = $page->title;
 		$this->layout->main = View::make('home')->nest('content', 'pages.show', compact('page'));
 	}
-	*/
+	
 }

@@ -1,6 +1,6 @@
 <?php
 
-class MenuController extends \BaseController {
+class MenuItemController extends \BaseController {
 
 	
 	/**
@@ -10,7 +10,7 @@ class MenuController extends \BaseController {
 	 */
 	public function index()
 	{
-		$menuItems = Menu::all();
+		$menuItems = MenuItem::all();
 		
  		$this->layout->title = 'Menu';
 		$this->layout->main = View::make('dash')->nest('content','menu.index',compact('menuItems'));
@@ -52,11 +52,11 @@ class MenuController extends \BaseController {
 		$name = Input::get('name');
 		$route = Input::get('route');
 		$position = Input::get('position');
-		$menu = new Menu();
-		$menu->name = $name;
-		$menu->route = $route;
-		$menu->position = $position;
-		$menu->save();
+		$menuItem = new MenuItem();
+		$menuItem->name = $name;
+		$menuItem->route = $route;
+		$menuItem->position = $position;
+		$menuItem->save();
 		return Redirect::route('admin.menu.index')->withMessage("L'onglet de menu a été créé");
 	}
 
@@ -80,12 +80,12 @@ class MenuController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit(Menu $menu)
+	public function edit(MenuItem $menuItem)
 	{
 		/*$post = Post::findOrFail($id);*/
 		/*return View::make('posts.edit')->withPost($post);*/
-		$this->layout->title = "Modifier le menu";
-		$this->layout->main = View::make('dash')->nest('content', 'menu.edit', compact('menu'));
+		$this->layout->title = "Modifier cet onglet du menu";
+		$this->layout->main = View::make('dash')->nest('content', 'menu.edit', compact('menuItem'));
 	}
 
 
@@ -95,7 +95,7 @@ class MenuController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(Menu $menu)
+	public function update(MenuItem $menuItem)
 	{
 		// define rules
 		$rules = array(
@@ -113,10 +113,10 @@ class MenuController extends \BaseController {
 		$name = Input::get('name');
 		$route = Input::get('route');
 		$position = Input::get('position');
-		$menu->name = $name;
-		$menu->route = $route;
-		$menu->position = $position;
-		$menu->update();
+		$menuItem->name = $name;
+		$menuItem->route = $route;
+		$menuItem->position = $position;
+		$menuItem->update();
 		return Redirect::route('admin.menu.edit')->withMessage("L'article a été modifié");
 	}
 
