@@ -70,25 +70,7 @@
 	<div class="row">
 		<div class="small-12 large-12 column">
 			<footer class="site-footer">
-				<div class="fixed-bottom">
-					<nav class="top-bar bottom-bar">
-						<ul class="left">
-							<li class="{{(strcmp(URL::full(), URL::to('/')) == 0) ? 'active' : ''}}"><a href="{{URL::to('/')}}">Easy Peasy <em>Lemon Squeezy</em></a></li>
-							@if(Auth::check())
-								<li>
-									{{HTML::link('admin','Admin')}}
-								</li>
-								<li>
-									{{HTML::link('auth/logout','Se déconnecter')}}
-								</li>
-							@else
-								<li>
-									{{HTML::link('auth/login','Se connecter')}}
-								</li>
-							@endif
-						</ul>
-					</nav>
-				</div>
+				<p>Copyright @JM2014</p>
 			</footer>
 		</div>
 	</div>

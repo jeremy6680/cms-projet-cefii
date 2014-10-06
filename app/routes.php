@@ -61,6 +61,13 @@ Route::get('/{page?}', [
 ])
 ->where('page', '[0-9]+');;
 
+Route::get('/posts/{post?}', [
+	'before' => 'published',
+	'as' => 'post',
+	'uses' => 'HomeController@displayPost'
+])
+->where('post', '[0-9]+');;
+
 /*
 Route::get('/{page?}', [
 	'before' => 'published',

@@ -37,12 +37,19 @@ class HomeController extends BaseController {
 		$this->layout->main = View::make('dash')->nest('content','menu.index',compact('menuItems'));		
 	}
 	*/
-	
+
 	
 	public function displayPage(Page $page)
 	{
 		$this->layout->title = $page->title;
 		$this->layout->main = View::make('home')->nest('content', 'pages.show', compact('page'));
+	}
+	
+	 public function displayPost(Post $post)
+	{
+		$comments = $post->comments()->where('approved', '=', 1)->get();
+		$this->layout->title = $post->title;
+		$this->layout->main = View::make('home')->nest('content', 'posts.show', compact('post', 'comments'));
 	}
 	
 }

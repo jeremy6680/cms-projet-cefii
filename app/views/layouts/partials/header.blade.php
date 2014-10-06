@@ -33,6 +33,9 @@
 						<li class="{{(strcmp(URL::full(), URL::to('/')) == 0) ? 'active' : ''}}"><a href="{{URL::to('/')}}">Easy Peasy <em>Lemon Squeezy</em></a></li>
 					</ul>
 					<ul class="right">
+						<li class="{{ (strpos(URL::current(), URL::to('admin.menu.index'))!== false) ? 'active' : '' }}">
+							{{HTML::linkRoute('admin.menu.index','Menu')}}
+						</li>
 						<li class="{{ (strpos(URL::current(),route('admin.pages.index'))!== false) ? 'active' : '' }}">
 							{{HTML::linkRoute('admin.pages.index','Pages')}}
 						</li>
