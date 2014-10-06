@@ -76,10 +76,12 @@ class MenuItemController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show(Page $page)
+
+	public function show($id)
 	{
-		$this->layout->title = $page->title;
-		$this->layout->main = View::make('home')->nest('content', 'pages.show', compact('page'));
+		$menuItem = MenuItem::findOrFail($id);
+		$this->layout->title = "Onglet du menu";
+		$this->layout->main = View::make('dash')->nest('content', 'menu.show', compact('menuItem'));
 	}
 
 
@@ -89,10 +91,10 @@ class MenuItemController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit(MenuItem $menuItem)
+	public function edit($id)
 	{
-		/*$post = Post::findOrFail($id);*/
-		/*return View::make('posts.edit')->withPost($post);*/
+		$menuItem = MenuItem::findOrFail($id);
+		/*return View::make('menu.edit')->withMenuItem($menuItem);*/
 		$this->layout->title = "Modifier cet onglet du menu";
 		$this->layout->main = View::make('dash')->nest('content', 'menu.edit', compact('menuItem'));
 	}
@@ -127,6 +129,20 @@ class MenuItemController extends \BaseController {
 		$menuItem->position = $position;
 		$menuItem->update();
 		return Redirect::route('admin.menu.edit')->withMessage("L'article a été modifié");
+	}
+	
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function destroy(MenuItem $menuItem)
+	{
+		/*$menuItem = MenuItem::findOrFail($id);*/
+		$menuItem->delete();
+		return Redirect::route('admin.menu.index')->withMessage("L'onglet a été supprimé");
 	}
 
 

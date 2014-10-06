@@ -17,6 +17,12 @@ class HomeController extends BaseController {
 	|
 	*/
 	
+    public function __construct()
+    {
+        $this->beforeFilter('published');
+
+    }
+	
 	public function index()
 	{
 		$posts = Post::where('draft', '=', 0)->orderBy('created_at', 'desc')->paginate(10); 
@@ -33,9 +39,8 @@ class HomeController extends BaseController {
 	*/
 	
 	
-	public function displayPage($id)
+	public function displayPage(Page $page)
 	{
-		$page = Page::findOrFail($id);
 		$this->layout->title = $page->title;
 		$this->layout->main = View::make('home')->nest('content', 'pages.show', compact('page'));
 	}

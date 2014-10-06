@@ -45,12 +45,29 @@ Route::get('/', [
 	'as' => 'home',
 	'uses' => 'HomeController@index'
 ]);
+/*
+Route::get('/{page?}', [
+	'before' => 'published',
+	'as' => 'page',
+	'uses' => 'PageController@show'
+])
+->where('page', '[0-9]+');
+*/
 
 Route::get('/{page?}', [
+	'before' => 'published',
+	'as' => 'page',
+	'uses' => 'HomeController@displayPage'
+])
+->where('page', '[0-9]+');;
+
+/*
+Route::get('/{page?}', [
+	'before' => 'published',
 	'as' => 'page',
 	'uses' => 'HomeController@displayPage'
 ]);
-
+*/
 Route::get('/category/{category?}', [
 	'as' => 'category-list',
 	'uses' => 'PostController@categoryList'
@@ -127,6 +144,8 @@ Route::model('comment','Comment');
 Route::model('pages','Page');
 Route::model('menuItem','MenuItem');
 Route::model('user','User');
+Route::model('page','Page');
+
 
 	// ===============================================
 	// ADMIN SECTION =================================
@@ -151,6 +170,7 @@ Route::group(['prefix' => 'admin','before'=>'auth'],function()
 	Route::get('/posts/create',['as' => 'posts.create','uses' => 'PostController@create']);
 	Route::get('/posts/{post}/edit',['as' => 'posts.edit','uses' => 'PostController@edit']);
 	Route::get('/posts/{post}/delete',['as' => 'posts.destroy','uses' => 'PostController@destroy']);
+	/*Route::get('/menu/{menuItem}/delete',['as' => 'menu.destroy','uses' => 'MenuItemController@destroy']);*/
 	Route::get('/comment/list',['as' => 'comment.list','uses' => 'CommentController@listComment']);
 	Route::get('/comment/{comment}/show',['as' => 'comment.show','uses' => 'CommentController@showComment']);
 	Route::get('/comment/{comment}/delete',['as' => 'comment.delete','uses' => 'CommentController@deleteComment']);

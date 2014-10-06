@@ -33,6 +33,20 @@
 						<li class="{{(strcmp(URL::full(), URL::to('/')) == 0) ? 'active' : ''}}"><a href="{{URL::to('/')}}">Easy Peasy <em>Lemon Squeezy</em></a></li>
 					</ul>
 					<ul class="right">
+						<li class="{{ (strpos(URL::current(),route('admin.pages.index'))!== false) ? 'active' : '' }}">
+							{{HTML::linkRoute('admin.pages.index','Pages')}}
+						</li>
+						<li class="{{ (strpos(URL::current(),route('posts.index'))!== false) ? 'active' : '' }}">
+							{{HTML::linkRoute('posts.index','Articles')}}
+						</li>
+						<li class="{{ (strpos(URL::current(),route('comment.list'))!== false) ? 'active' : '' }}">
+							{{HTML::linkRoute('comment.list','Commentaires')}}
+						</li>
+						<li class="{{ (strpos(URL::current(),route('admin.user.index'))!== false) ? 'active' : '' }}">
+							@if(Auth::user()->admin == 1){{HTML::linkRoute('admin.user.index','Utilisateurs')}}
+							@else{{HTML::linkRoute('admin.user.show','Mon profil',Auth::user()->id)}}
+							@endif
+						</li >
 						@if(Auth::check())
 							<li class="{{ (strpos(URL::current(), URL::to('logout'))!== false) ? 'active' : '' }}" >
 								{{HTML::link('auth/logout','Se déconnecter')}}

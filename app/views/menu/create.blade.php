@@ -6,16 +6,15 @@
 {{ Form::open( array('route' => 'admin.menu.store') )}}
 	{{ Form::label('route', 'Vers quelle page doit mener ce lien ?') }}
 	{{ Form::select('route', array(
-		'Page' => Page::all()->lists('title', 'id'),
-		'Catégorie' => Post::distinct()->lists('category')
+		'Page' => Page::where('draft', '=', '0')->lists('title', 'id'),
+		'Catégorie' => Post::where('category', '<>', 'null')->where('category', '<>', '')->distinct()->lists('category')
 		), null, ['class' => 'field']) }}
-	{{ Form::label('name', 'Quel nom souhaitez-vous afficher dans le menu pour ce lien ?') }}
+	{{ Form::label('name', 'Quel est le nom de cet onglet dans le menu ?') }}
 	{{ Form::text('name') }}
 	{{ $errors->first('name', '<small class="error">:message</small>') }}
 	{{ Form::label('position') }}
 	{{ Form::text('position') }}
 	{{ $errors->first('position', '<small class="error">:message</small>') }}
-
 	<br>
 	{{ Form::submit('valider', array('class' => 'button tiny radius')) }}
 {{ Form::close()}}
