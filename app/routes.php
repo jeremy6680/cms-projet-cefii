@@ -127,6 +127,8 @@ Route::filter('auth', function()
 */
 Route::controller('password', 'RemindersController');
 
+
+
 /* tests ci-dessous */
 Route::controller('users', 'UsersController');
 Route::get('login', 'AuthController@getLogin');
@@ -170,6 +172,8 @@ Route::group(['prefix' => 'admin','before'=>'auth'],function()
 		return $layout;
 	 
 	}));
+	Route::get('/photo/form',['as' => 'photo.form','uses' => 'PhotoController@getForm']);
+	Route::post('/photo/form',['as' => 'photo.form','uses' => 'PhotoController@postForm']);
 	Route::resource('menu', 'MenuItemController');
 	Route::resource('pages', 'PageController');
 	Route::resource('user', 'UserController');
