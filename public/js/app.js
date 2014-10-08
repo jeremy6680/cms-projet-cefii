@@ -11,15 +11,23 @@ $(document).ready(function() {
 		});
 		
 		
-	// Editor
-			$('.TitleEditable').editable({
-				height: 60
-			});
-			
-            $('.ContentEditable').editable({
-            	height: 400,
-            	placeholder: "Entrez le contenu de votre article ici..."
-            });
+	// Editor Froala (à supprimer ?)
+	
+	$('.TitleEditable').editable({
+		height: 60
+	});
+	
+    $('.ContentEditable').editable({
+    	height: 400,
+    	placeholder: "Entrez le contenu de votre article ici..."
+    });
+    
+   
+   // TEST MARKDOWN
+   $('#clickMe').click(function(){
+   	$('#preview').toggle();
+   });
+   
 });
 
 

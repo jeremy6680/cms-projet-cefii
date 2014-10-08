@@ -8,6 +8,8 @@
 	{{ Form::text('title') }}
 	{{ $errors->first('title', '<small class="error">:message</small>') }}
 	{{ Form::textarea('content') }}
+	<div id="clickMe">Preview</div>
+	<div id="preview">{{ Markdown::parse($post->content) }}</div>
 	{{ $errors->first('content', '<small class="error">:message</small>') }}
 	{{ Form::label('category') }}
 	{{ Form::text('category') }}

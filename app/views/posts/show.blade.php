@@ -9,7 +9,7 @@
         </div>
     </header>
     <div class="post-content">
-        <p>{{ $post->content }}</p>
+        <p>{{ Markdown::parse($post->content) }}</p>
     </div>
     <footer class="post-footer">
         <hr>
