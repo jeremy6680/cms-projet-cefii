@@ -15,6 +15,12 @@
         <hr>
     </footer>
 </article>
+@if (Auth::check())
+	@if(Auth::user()->admin == 1) {{HTML::linkRoute('posts.edit','Modifier',$post->id)}}
+	@elseif(Auth::user()->pseudo == $post->user->pseudo){{HTML::linkRoute('posts.edit','Modifier')}}
+	@else{{''}}
+	@endif
+@endif
 <section class="comments">
     @if(!$comments->isEmpty())
         <h3>Commentaires sur {{$post->title}}</h3>

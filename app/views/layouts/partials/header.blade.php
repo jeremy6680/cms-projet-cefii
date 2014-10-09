@@ -10,7 +10,11 @@
 	{{ HTML::script('js/vendor/jquery.js') }}
 	{{ HTML::script('js/vendor/froala_editor.min.js') }}
 	{{ HTML::style('css/font-awesome.min.css') }}
-	{{ HTML::style('css/froala_editor.min.css') }}
+	{{-- HTML::style('css/froala_editor.min.css') --}}
+	<link rel="stylesheet" href="http://lab.lepture.com/editor/editor.css" />
+	{{ HTML::style('css/lepture.css') }}
+	{{ HTML::style('css/markitup/skins/simple/style.css') }}
+	{{ HTML::style('css/markitup/sets/default/style.css') }}
 	{{ HTML::style('css/foundation.css') }}
 	{{ HTML::style('css/admin.css') }}
 	{{ HTML::style('css/custom.css') }}

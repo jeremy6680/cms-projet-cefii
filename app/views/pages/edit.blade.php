@@ -4,11 +4,12 @@
 </h2>
 <hr>
 {{ Form::model($page, array('route' => ['admin.pages.update', $page->id], 'method' => 'PUT') ) }}
-	{{ Form::label('title', "Titre de la page") }}
-	{{ Form::text('title') }}
+	<div class="editor-wrapper">
+	{{ Form::text('title',$page->title,array('class' => 'title')) }}
 	{{ $errors->first('title', '<small class="error">:message</small>') }}
 	{{ Form::textarea('content') }}
 	{{ $errors->first('content', '<small class="error">:message</small>') }}
+	</div>
 	{{ Form::select('draft', [false => 'Prêt à publier', true => 'Enregistrer en tant que brouillon'], $page->draft) }}
 	<br>
 	{{ Form::submit('valider', array('class' => 'button tiny radius')) }}

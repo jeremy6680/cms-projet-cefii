@@ -4,13 +4,12 @@
 </h2>
 <hr>
 {{ Form::model($post, array('route' => ['posts.update', $post->id], 'method' => 'PUT') ) }}
-	{{ Form::label('title', "Titre de l'article") }}
-	{{ Form::text('title') }}
+	<div class="editor-wrapper">
+	{{ Form::text('title', $post->title,array('class' => 'title')) }}
 	{{ $errors->first('title', '<small class="error">:message</small>') }}
 	{{ Form::textarea('content') }}
-	<div id="clickMe">Preview</div>
-	<div id="preview">{{ Markdown::parse($post->content) }}</div>
 	{{ $errors->first('content', '<small class="error">:message</small>') }}
+	</div>
 	{{ Form::label('category') }}
 	{{ Form::text('category') }}
 	{{ Form::select('draft', [false => 'Prêt à publier', true => 'Enregistrer en tant que brouillon'], $post->draft) }}
