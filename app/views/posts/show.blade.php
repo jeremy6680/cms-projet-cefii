@@ -45,7 +45,7 @@
             @endforeach
         </ul>
     @else
-        <h3>Aucune commentaire sur {{$post->title}}</h3>
+        <h3>Aucun commentaire sur {{$post->title}}</h3>
     @endif
     <!--comment form -->
     @include('comments.commentform') 
