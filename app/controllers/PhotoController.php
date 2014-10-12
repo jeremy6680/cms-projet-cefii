@@ -16,7 +16,9 @@ class PhotoController extends BaseController {
 
 	public function getForm()
 	{
-		return View::make('photo');
+		/*return View::make('photo');*/
+		$this->layout->title = 'Ajouter une photo';
+		$this->layout->main = View::make('dash')->nest('content', 'photo');
 	}
 
 	public function postForm()
@@ -26,7 +28,8 @@ class PhotoController extends BaseController {
             ->withErrors($this->validation->errors());
 		} else {
 			if($this->photogestion->save(Input::file('image'))) {
-				return View::make('photo_ok');
+				$this->layout->title = 'Ajouter une photo';
+				$this->layout->main = View::make('dash')->nest('content', 'photo_ok');
 			} else {
 				return Redirect::route('admin.photo.form')
                 ->with('error','Désolé mais votre image ne peut pas être envoyée !');

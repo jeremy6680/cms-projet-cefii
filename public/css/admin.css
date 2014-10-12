@@ -15,12 +15,22 @@ a {
 	text-align: center;
 }
 
+.admin .main {
+	background-color: white;
+}
+
+.admin .main .icon {
+	font-size: 1.5em;
+}
+
 #admin-menu .icon {
 	font-size: 26px;
 	color: #f0f0f0;
 	padding: 14px;
 	border-radius: 30%;
 	/*background-color: #D3D3D3;*/
+	-webkit-transition: color 2s; /* For Safari 3.1 to 6.0 */
+    transition: color 2s;
 }
 
 #admin-menu .icon:hover {
@@ -45,7 +55,9 @@ a {
 
 #admin-menu .add {
 	float: right;
-	display: none;
+	visibility: hidden;
+	-webkit-transition: visibility 2s; /* For Safari 3.1 to 6.0 */
+    transition: visibility 2s;
 }
 
 #admin-menu hr {
@@ -53,7 +65,7 @@ a {
 }
 
 #admin-menu:hover .add {
-	display: inline-block;
+	visibility: visible;
 }
 
 #admin-menu:hover hr {

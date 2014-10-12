@@ -1,6 +1,6 @@
 @include('layouts.partials.header')
 
-<div class="row">
+<div class="row main">
  	
 	@if (Session::has('message'))
 	<div class="small-12 large-12 column">

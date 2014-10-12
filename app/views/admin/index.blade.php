@@ -23,6 +23,10 @@
 				<a href="{{ URL::route('comment.list') }}"><span class="fi-comment-square icon" title="icon commentaires" aria-hidden="true"> Gestion des Commentaires</span></a>
 			</li>
 			<hr>
+			<li class="{{-- (strpos(URL::current(),route('photo.form'))!== false) ? 'active' : '' --}}">
+				<a href="{{ URL::route('photo.form') }}"><span class="fi-camera-slr icon" title="icon dashboard" aria-hidden="true"> Ajouter une photo</span></a>
+			</li>
+			<hr>
 			<li class="{{ (strpos(URL::current(),route('admin.user.index'))!== false) ? 'active' : '' }}">
 				@if(Auth::user()->admin == 1)
 					<a href="{{ URL::route('admin.user.index') }}"><span class="fi-people icon" title="icon people" aria-hidden="true"> Gestion des Utilisateurs</span></a>

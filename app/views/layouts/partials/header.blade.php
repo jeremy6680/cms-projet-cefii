@@ -19,8 +19,8 @@
      
 </head>
 <body class="admin">
-<div class="main">
-<div class="row main">
+<div class="site-wrapper">
+<div class="row">
 	<div class="small-12 large-12 column" id="masthead">
 		<header>
 			<nav class="top-bar" data-topbar>
