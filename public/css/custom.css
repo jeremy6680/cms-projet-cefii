@@ -1,0 +1,42 @@
+/*.icon {
+	font-size: 30px;
+	color: #A9A9A9;
+}
+
+.icon:hover {
+	color: lightgreen;
+}*/
+
+.previous, .next {
+	display: inline-block;
+	width: 100px;
+}
+
+.previous {
+	position: fixed;
+	left: 100px;
+}
+
+.next {
+	position: fixed;
+	right: 100px;
+	text-align: right;
+}
+
+.previous a, .next a {
+	color: #ee752c;
+}
+
+.previous .icon, .next .icon {
+	padding: 13px;
+	background-color: #413F44;
+	line-height: 100px;
+	border-radius: 50%;
+}
+
+.navi-text {
+	border-top: solid 1px grey;
+	color: #413F44;
+	text-transform: uppercase;
+	padding: 10px 0;
+}

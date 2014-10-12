@@ -1,13 +1,67 @@
+body {
+	background: url('../img/bg-texture.jpg') center center repeat;
+}
+
+.CodeMirror {
+    background-color: #FFF;
+}
+
+a {
+	color: #a88028;
+}
+
+.admin th,
+.admin td {
+	text-align: center;
+}
+
+#admin-menu .icon {
+	font-size: 26px;
+	color: #f0f0f0;
+	padding: 14px;
+	border-radius: 30%;
+	/*background-color: #D3D3D3;*/
+}
+
+#admin-menu .icon:hover {
+	background-color: #b3b1a4;
+}
+
+#admin-menu .active .icon {
+	background-color: #b3b1a4;
+}
+
 #admin-menu {
-	position: fixed;
-	top: 0px;
-	left: 0;
-	height: 100%;
-	color: white;
-	padding-top: 200px;
-	z-index: 100;
-	width: 150px;
-	background-color: grey;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    color: #FFF;
+    padding-top: 20px;
+    z-index: 100;
+    width: 150px;
+    /*background-color: #808080;*/
+}
+
+#admin-menu .add {
+	float: right;
+	display: none;
+}
+
+#admin-menu hr {
+	visibility: hidden;
+}
+
+#admin-menu:hover .add {
+	display: inline-block;
+}
+
+#admin-menu:hover hr {
+	visibility: visible;
+}
+
+#admin-menu:hover .icon {
+	color: #3d3d3d;
 }
 
 #admin-menu ul {
@@ -16,10 +70,22 @@
 
 #admin-menu li {
 	list-style-type: none;
+	display: inline-block;
 }
 
 #admin-menu li a {
 	color: white;
+}
+
+h2 {
+	font-family: 'Amatic SC', cursive;
+	font-weight: 700;
+}
+
+th {
+	font-family: 'Amatic SC', cursive;
+	font-weight: 400;	
+	font-size: 1.5em !important;
 }
 
 /*********** TEST MARKDOWN ************/
@@ -30,6 +96,12 @@
 
 @media screen and (max-width: 1260px) {
   #admin-menu {
+	display: none;
+  }
+}
+
+@media screen and (min-width: 641px) {
+  #masthead {
 	display: none;
   }
 }

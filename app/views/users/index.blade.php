@@ -3,7 +3,8 @@
 			<div data-alert class="alert-box success radius">{{ Session::get('ok') }}</div>
 		@endif
 
-				{{ link_to_route('admin.user.create', 'Ajouter', null, array('class' => 'button secondary small radius right')) }}
+				{{-- link_to_route('admin.user.create', 'Ajouter', null, array('class' => 'button secondary small radius right')) --}}
+				<a href="{{ URL::route('admin.user.create') }}" target="_blank"><span class="fi-plus icon button secondary small radius right" title="icon ajouter icon" aria-hidden="true"></span></a>
 				<h2>Liste des utilisateurs</h2><hr>
 
 			<table>
@@ -21,11 +22,14 @@
 				    <td>{{ $user->id }}</td>
 				    <td><strong>{{ $user->pseudo }}</strong></td>
 				    <td>{{ link_to_route('admin.user.show', 'Voir', array($user->id), array('class' => 'button success small radius')) }}</td>
-				    <td>{{ link_to_route('admin.user.edit', 'Modifier', array($user->id), array('class' => 'button small radius')) }}</td>
+				    <td>{{-- link_to_route('admin.user.edit', 'Modifier', array($user->id), array('class' => 'button small radius')) --}}
+				    	<a href="{{ URL::route('admin.user.edit', $user->id) }}"><span class="fi-pencil icon" title="icon modifier icon" aria-hidden="true"></span></a>
+				    </td>
 				    <td>
 							{{ Form::open(array('method' => 'DELETE', 'route' => array('admin.user.destroy', $user->id))) }}
 								{{ Form::submit('Supprimer', array('class' => 'button alert small radius', 'onclick' => 'return confirm(\'Voulez-vous vraiment supprimer cet utilisateur ?\')')) }}
 							{{ Form::close() }}
+					<!--<a href="{{ URL::route('admin.user.destroy', $user->id) }}" onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')"><span class="fi-trash icon button alert small radius" title="icon poubelle icon" aria-hidden="true"></span></a>-->
 				    </td>
 				    </tr>
 				  @endforeach

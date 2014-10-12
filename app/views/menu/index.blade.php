@@ -1,4 +1,5 @@
-{{ link_to_route('admin.menu.create', 'Ajouter', null, array('class' => 'button secondary small radius right')) }}
+{{-- link_to_route('admin.menu.create', 'Ajouter', null, array('class' => 'button secondary small radius right')) --}}
+<a href="{{ URL::route('admin.menu.create') }}" target="_blank"><span class="fi-plus icon button secondary small radius right" title="icon ajouter icon" aria-hidden="true"></span></a>
 <h2 class="post-listings">Menu</h2><hr>
     <table>
     	<thead>

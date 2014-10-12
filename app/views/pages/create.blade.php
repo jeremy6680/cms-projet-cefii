@@ -5,7 +5,7 @@
 <hr>
 {{ Form::open( array('route' => 'admin.pages.store') )}}
 	<div class="editor-wrapper">
-	{{ Form::text('title','',array('class' => 'title')) }}
+	{{ Form::text('title','Titre de la page',array('class' => 'title')) }}
 	{{ $errors->first('title', '<small class="error">:message</small>') }}
 	{{ Form::textarea('content') }}
 	{{ $errors->first('content', '<small class="error">:message</small>') }}

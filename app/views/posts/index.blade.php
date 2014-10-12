@@ -1,4 +1,5 @@
-{{ link_to_route('posts.create', 'Ajouter', null, array('class' => 'button secondary small radius right')) }}
+{{-- link_to_route('posts.create', 'Ajouter', null, array('class' => 'button secondary small radius right')) --}}
+<a href="{{ URL::route('posts.create') }}" target="_blank"><span class="fi-plus icon button secondary small radius right" title="icon ajouter icon" aria-hidden="true"></span></a>
 <h2 class="post-listings">Liste des articles</h2><hr>
     <table>
     	<thead>
@@ -100,18 +101,29 @@
             	</td>
             	<td>{{$post->user->pseudo}}</td>
 			    <td>
-			    	@if(Auth::user()->admin == 1) {{HTML::linkRoute('posts.edit','Modifier',$post->id)}}
-			    	@elseif(Auth::user()->pseudo == $post->user->pseudo){{HTML::linkRoute('posts.edit','Modifier')}}
-			    	@else{{'-'}}
+			    	@if(Auth::user()->admin == 1) 
+			    		{{-- HTML::linkRoute('posts.edit','Modifier',$post->id) --}}
+			    		<a href="{{ URL::route('posts.edit', $post->id) }}"><span class="fi-pencil icon" title="icon modifier icon" aria-hidden="true"></span></a>
+			    	@elseif(Auth::user()->pseudo == $post->user->pseudo)
+			    		<a href="{{ URL::route('posts.edit', $post->id) }}"><span class="fi-pencil icon" title="icon modifier icon" aria-hidden="true"></span></a>
+			    	@else
+			    		<span class="fi-ban icon" title="icon ban icon" aria-hidden="true"></span>
 			    	@endif
 			    </td>
 			    <td>
-			    	@if(Auth::user()->admin == 1){{HTML::linkRoute('posts.destroy','Supprimer',$post->id,array('onclick' => 'return confirm(\'Voulez-vous vraiment supprimer cet article ?\')'))}}
-			    	@elseif(Auth::user()->pseudo == $post->user->pseudo){{HTML::linkRoute('posts.destroy','Supprimer',$post->id,array('onclick' => 'return confirm(\'Voulez-vous vraiment supprimer cet article ?\')'))}}
-			    	@else{{'-'}}
+			    	@if(Auth::user()->admin == 1)
+			    		{{-- HTML::linkRoute('posts.destroy','Supprimer',$post->id,array('onclick' => 'return confirm(\'Voulez-vous vraiment supprimer cet article ?\')')) --}}
+			    		<a href="{{ URL::route('posts.destroy', $post->id) }}" onclick="return confirm('Voulez-vous vraiment supprimer cet article ?')"><span class="fi-trash icon" title="icon poubelle icon" aria-hidden="true"></span></a>
+			    	@elseif(Auth::user()->pseudo == $post->user->pseudo)
+			    		{{-- HTML::linkRoute('posts.destroy','Supprimer',$post->id,array('onclick' => 'return confirm(\'Voulez-vous vraiment supprimer cet article ?\')')) --}}
+			    		<a href="{{ URL::route('posts.destroy', $post->id) }}" onclick="return confirm('Voulez-vous vraiment supprimer cet article ?')"><span class="fi-trash icon" title="icon poubelle icon" aria-hidden="true"></span></a>
+			    	@else
+			    		<span class="fi-ban icon" title="icon ban icon" aria-hidden="true"></span>
 			    	@endif
 			    </td>
-			    <td>{{HTML::linkRoute('posts.show','Voir',$post->id,['target'=>'_blank'])}}</td>
+			    <td>
+			    	<a href="{{ URL::route('posts.show', $post->id) }}" target="_blank"><span class="fi-eye icon" title="icon voir icon" aria-hidden="true"></span></a>
+			    </td>
 	    	</tr>
 	    @endforeach
 	    </tbody>

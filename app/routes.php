@@ -131,7 +131,8 @@ Route::controller('password', 'RemindersController');
 
 /* tests ci-dessous */
 Route::controller('users', 'UsersController');
-Route::get('login', 'AuthController@getLogin');
+Route::get('login', ['as' => 'login', 'uses' => 'AuthController@getLogin']);
+Route::get('logout', ['as' => 'logout', 'uses' => 'AuthController@getLogout']);
 
 Route::post('/post/{post}/comment',['as' => 'comment.new','uses' =>'CommentController@newComment']);
 
@@ -166,9 +167,10 @@ Route::group(['prefix' => 'admin','before'=>'auth'],function()
 	/*get routes*/
 	Route::get('/',array('as' => 'admin', function()
 	{
+		$user = Auth::user()->pseudo;
 		$layout = View::make('layouts.master');
 		$layout->title = 'DashBoard';
-		$layout->main = View::make('dash')->with('content','Hi admin, Welcome to Dashboard!');
+		$layout->main = View::make('dash')->nest('content','admin.index', compact('user'));
 		return $layout;
 	 
 	}));

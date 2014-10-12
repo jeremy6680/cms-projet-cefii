@@ -8,19 +8,17 @@
 	@show
 	{{ HTML::script('js/vendor/modernizr.js') }}
 	{{ HTML::script('js/vendor/jquery.js') }}
-	{{ HTML::script('js/vendor/froala_editor.min.js') }}
 	{{ HTML::style('css/font-awesome.min.css') }}
-	{{-- HTML::style('css/froala_editor.min.css') --}}
-	<link rel="stylesheet" href="http://lab.lepture.com/editor/editor.css" />
+	{{ HTML::style('http://fonts.googleapis.com/css?family=Amatic+SC:400,700') }}
+	{{ HTML::style('http://lab.lepture.com/editor/editor.css') }}
+	{{ HTML::style('css/open-iconic-foundation.css') }}
 	{{ HTML::style('css/lepture.css') }}
-	{{ HTML::style('css/markitup/skins/simple/style.css') }}
-	{{ HTML::style('css/markitup/sets/default/style.css') }}
 	{{ HTML::style('css/foundation.css') }}
 	{{ HTML::style('css/admin.css') }}
 	{{ HTML::style('css/custom.css') }}
      
 </head>
-<body>
+<body class="admin">
 <div class="main">
 <div class="row main">
 	<div class="small-12 large-12 column" id="masthead">
@@ -37,7 +35,7 @@
 						<li class="{{(strcmp(URL::full(), URL::to('/')) == 0) ? 'active' : ''}}"><a href="{{URL::to('/')}}">Easy Peasy <em>Lemon Squeezy</em></a></li>
 					</ul>
 					<ul class="right">
-						<li class="{{ (strpos(URL::current(), URL::to('admin.menu.index'))!== false) ? 'active' : '' }}">
+						<li class="{{ (strpos(URL::current(), route('admin.menu.index'))!== false) ? 'active' : '' }}">
 							{{HTML::linkRoute('admin.menu.index','Menu')}}
 						</li>
 						<li class="{{ (strpos(URL::current(),route('admin.pages.index'))!== false) ? 'active' : '' }}">
@@ -47,16 +45,19 @@
 							{{HTML::linkRoute('posts.index','Articles')}}
 						</li>
 						<li class="{{ (strpos(URL::current(),route('comment.list'))!== false) ? 'active' : '' }}">
-							{{HTML::linkRoute('comment.list','Commentaires')}}
+							{{ HTML::linkRoute('comment.list','Commentaires') }}
 						</li>
 						<li class="{{ (strpos(URL::current(),route('admin.user.index'))!== false) ? 'active' : '' }}">
-							@if(Auth::user()->admin == 1){{HTML::linkRoute('admin.user.index','Utilisateurs')}}
-							@else{{HTML::linkRoute('admin.user.show','Mon profil',Auth::user()->id)}}
+							@if(Auth::user()->admin == 1)
+								{{ HTML::linkRoute('admin.user.index','Utilisateurs') }}
+							@else
+								{{ HTML::linkRoute('admin.user.show','Mon profil',Auth::user()->id) }}
 							@endif
 						</li >
 						@if(Auth::check())
 							<li class="{{ (strpos(URL::current(), URL::to('logout'))!== false) ? 'active' : '' }}" >
-								{{HTML::link('auth/logout','Se déconnecter')}}
+								{{-- HTML::link('auth/logout','Se déconnecter') --}}
+								<a href="auth/logout"><span class="fi-power-standby icon" title="icon power icon" aria-hidden="true"></span></a>
 							</li>
 						@else
 							<li class="{{ (strpos(URL::current(), URL::to('login'))!== false) ? 'active' : '' }}">

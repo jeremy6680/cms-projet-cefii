@@ -1,4 +1,4 @@
-@extends('templates.default')
+@extends('layouts.auth')
 
 @section('content')
 		@if(Session::has('error'))

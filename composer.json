@@ -9,6 +9,9 @@
 		"maxhoffmann/parsedown-laravel": "dev-master"
 	},
 	"autoload": {
+		"files": [
+		            "app/helpers.php"
+		        ],
 		"classmap": [
 			"app/commands",
 			"app/controllers",

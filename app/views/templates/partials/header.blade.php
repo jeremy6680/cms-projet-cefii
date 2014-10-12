@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset( 'css/foundation.css' ) }}" />
     <script src="{{ asset( 'js/vendor/modernizr.js' ) }}"></script>
   </head>
-  <body>
+  <body class="{{{ isset($class) ? $class : 'Default' }}}">
     
     <div class="row">
       <div class="large-12 columns">
@@ -19,6 +19,7 @@
 		  	@else
 		  		{{ link_to('auth/login', 'Se connecter', array('class' => 'success tiny button right')) }}
 		  	@endif
-        <h1>My blog</h1>
+        <h1>Easy Peasy</h1>
+        <h2><em>Lemon Squeezy</em></h2>
       </div>
     </div>

@@ -1,0 +1,22 @@
+.login {
+	background: url('../img/unsplash3.jpg') center center no-repeat;
+	background-size: cover;
+}
+
+.remind {
+	background: url('../img/unsplash1.jpg') center center no-repeat;
+	background-size: cover;
+}
+
+.reset {
+	background: url('../img/unsplash2.jpg') center center no-repeat;
+	background-size: cover;
+}
+
+.panel.callout {
+    background: none repeat scroll 0% 0% rgba(255,255,255,0.4);
+}
+
+.panel.callout h1, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6 {
+    font-family: "Amatic SC", cursive;
+}

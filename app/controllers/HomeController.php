@@ -47,9 +47,17 @@ class HomeController extends BaseController {
 	
 	 public function displayPost(Post $post)
 	{
+		$previousPost = Post::where('draft', '=', 0)->where('id', '<', $post->id)->max('id');
+		$nextPost = Post::where('draft', '=', 0)->where('id', '>', $post->id)->min('id');
+		if(!is_null($previousPost)) {
+			$previousPostTitle = Post::find($previousPost)->title;
+		}
+		if(!is_null($nextPost)) {
+			$nextPostTitle = Post::find($nextPost)->title;
+		}
 		$comments = $post->comments()->where('approved', '=', 1)->get();
 		$this->layout->title = $post->title;
-		$this->layout->main = View::make('home')->nest('content', 'posts.show', compact('post', 'comments'));
+		$this->layout->main = View::make('home')->nest('content', 'posts.show', compact('post', 'comments', 'previousPost', 'nextPost', 'nextPostTitle', 'previousPostTitle'));
 	}
 	
 }

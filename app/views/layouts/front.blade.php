@@ -8,14 +8,14 @@
 	@show
 	{{ HTML::script('js/vendor/modernizr.js') }}
 	{{ HTML::script('js/vendor/jquery.js') }}
-	{{ HTML::script('js/vendor/froala_editor.min.js') }}
 	{{ HTML::style('css/font-awesome.min.css') }}
-	{{ HTML::style('css/froala_editor.min.css') }}
+	{{ HTML::style('http://lab.lepture.com/editor/editor.css') }}
+	{{ HTML::style('css/open-iconic-foundation.css') }}
 	{{ HTML::style('css/foundation.css') }}
 	{{ HTML::style('css/custom.css') }}
      
 </head>
-<body>
+<body class="front {{{ isset($class) ? $class : 'default' }}}">
 <div class="main">
 <div class="row main">
 	<div class="small-12 large-12 column" id="masthead">

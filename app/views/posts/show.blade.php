@@ -1,4 +1,26 @@
 <article class="post">
+	
+	@if (isset($previousPost))
+		<div class="previous">
+			<a href="{{ URL::route('posts.show', $previousPost) }}"><span class="fi-arrow-left icon"></span><br>
+			<span class="navi-text">Précédent</span><br>
+				@if (isset($previousPostTitle))
+					<span class="navi-title">{{ $previousPostTitle }}</span>
+				@endif
+			</a>
+		</div>
+	@endif
+	@if (isset($nextPost))
+		<div class="next">
+			<a href="{{ URL::route('posts.show', $nextPost) }}"><span class="fi-arrow-right icon"></span><br>
+			<span class="navi-text">Suivant</span><br>
+				@if (isset($nextPostTitle))
+					<span class="navi-title">{{ $nextPostTitle }}</span>
+				@endif
+			</a>
+		</div>
+	@endif
+	
     <header class="post-header">
         <h1 class="post-title">
             {{$post->title}}
@@ -8,9 +30,11 @@
             <span class="right label">{{HTML::link('#reply','Répondre',['style'=>'color:inherit'])}} </span>
         </div>
     </header>
+	
     <div class="post-content">
         <p>{{ Markdown::parse($post->content) }}</p>
     </div>
+
     <footer class="post-footer">
         <hr>
     </footer>

@@ -14,7 +14,7 @@ class AuthController extends BaseController {
 
 	public function getLogin()
 	{
-		return View::make('auth.login');
+		return View::make('auth.login', array('class' => 'login'));
 	}
 
 	public function postLogin()
