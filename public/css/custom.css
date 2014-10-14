@@ -7,6 +7,31 @@
 	color: lightgreen;
 }*/
 
+/****** General Styles *******/
+
+a {
+	color: #EE752C;
+}
+
+a:hover, a:active, a:focus {
+	color: #C65411;
+}
+
+body {
+	background: url('../img/bg-texture.jpg') center center repeat;
+	font-family: "Fanwood Text",Georgia,serif;
+}
+
+.row {
+	background-color: white;
+}
+
+/**** Header ****/
+
+#masthead {
+	margin-bottom: 80px;
+}
+
 .previous, .next {
 	display: inline-block;
 	width: 100px;
@@ -14,17 +39,22 @@
 
 .previous {
 	position: fixed;
-	left: 100px;
+	top: 178px;
 }
 
 .next {
 	position: fixed;
-	right: 100px;
+	right: 154px;
 	text-align: right;
+	top: 178px;
 }
 
 .previous a, .next a {
 	color: #ee752c;
+}
+
+.previous a:hover, .next a:hover {
+	color: #C65411;
 }
 
 .previous .icon, .next .icon {
@@ -40,3 +70,54 @@
 	text-transform: uppercase;
 	padding: 10px 0;
 }
+
+footer.site-footer {
+	padding: 10px;
+}
+
+footer.site-footer p {
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+footer.site-footer a {
+	font-size: 12px;
+	color: #EE752C;
+}
+
+/***** Posts *******/
+
+article {
+	font-family: "Fanwood Text",Georgia,serif;
+}
+
+article p {
+	font-size: 1.2rem;
+}
+
+article ul, article ol, article dl {
+	font-size: 1.2rem;
+}
+
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+	font-family: "Quattrocento",Georgia,serif;
+}
+
+article a:hover, article a:active, article a:focus {
+	color: #EE752C;
+	text-decoration: underline;
+}
+
+.comments h3 {
+    font-size: 1.25rem;
+}
+
+.comments h4 {
+    font-size: 1.2rem;
+}
+

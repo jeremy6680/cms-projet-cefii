@@ -1,5 +1,5 @@
 body {
-	background: url('../img/bg-texture.jpg') center center repeat;
+	background: white;
 }
 
 .CodeMirror {
@@ -98,6 +98,20 @@ th {
 	font-family: 'Amatic SC', cursive;
 	font-weight: 400;	
 	font-size: 1.5em !important;
+}
+
+footer.site-footer {
+	padding: 10px;
+}
+
+footer.site-footer p {
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+footer.site-footer a {
+	font-size: 12px;
+	color: #EE752C;
 }
 
 /*********** TEST MARKDOWN ************/

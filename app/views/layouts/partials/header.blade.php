@@ -15,7 +15,6 @@
 	{{ HTML::style('css/lepture.css') }}
 	{{ HTML::style('css/foundation.css') }}
 	{{ HTML::style('css/admin.css') }}
-	{{ HTML::style('css/custom.css') }}
      
 </head>
 <body class="admin">
