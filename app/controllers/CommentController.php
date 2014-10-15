@@ -63,7 +63,8 @@ class CommentController extends BaseController
         $status = $comment->approved;
         $comment->delete();
         ($status === 'yes') ? $post->decrement('comment_count') : '';
-        return Redirect::back()->with('success', 'Commentaire suprimé !');
+        /*return Redirect::back()->with('success', 'Commentaire suprimé !');*/
+		return Redirect::back()->withMessage("Le commentaire a été supprimé");
     }
 
     /* post functions */
@@ -75,7 +76,7 @@ class CommentController extends BaseController
         $comment->post->comment_count = Comment::where('post_id', '=', $comment->post->id)
             ->where('approved', '=', 1)->count();
         $comment->post->save();
-        return Redirect::back()->with('success', 'Commentaire ' . (($comment->approved === 'yes') ? 'Approuvé' : 'Refusé'));
+        return Redirect::back()->withMessage('Commentaire ' . (($comment->approved === 'yes') ? 'approuvé' : 'refusé'));
     }
 
 }

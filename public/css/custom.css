@@ -39,14 +39,14 @@ body {
 
 .previous {
 	position: fixed;
-	top: 178px;
+	top: 260px;
 }
 
 .next {
 	position: fixed;
 	right: 154px;
 	text-align: right;
-	top: 178px;
+	top: 260px;
 }
 
 .previous a, .next a {
@@ -119,5 +119,28 @@ article a:hover, article a:active, article a:focus {
 
 .comments h4 {
     font-size: 1.2rem;
+}
+
+.comments li {
+	list-style-type: none;
+}
+
+/**** Post meta ***/
+
+.article-meta p {
+	font-size: 1rem;
+}
+
+/**** Social ****/
+
+.social {
+    border-top: 1px solid #CCC;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+
+.twitter-share-button {
+	position: relative;
+	top: 2px;
 }
 

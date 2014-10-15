@@ -21,10 +21,16 @@
             {{Form::select('status',['yes'=>'Oui','no'=>'Non'],$comment->approved,['style'=>'margin-bottom:0','onchange'=>'submit()'])}}
             {{Form::close()}}
         </td>
-        <td>{{HTML::linkRoute('comment.delete','Supprimer',$comment->id,array('onclick' => 'return confirm(\'Voulez-vous vraiment supprimer ce commentaire ?\')'))}}</td>
-        <td>{{HTML::linkRoute('comment.show','Vue rapide',$comment->id,['data-reveal-id'=>'comment-show','data-reveal-ajax'=>'true'])}}</td>
+        <td>
+        	{{-- HTML::linkRoute('comment.delete','Supprimer',$comment->id,array('onclick' => 'return confirm(\'Voulez-vous vraiment supprimer ce commentaire ?\')')) --}}
+        	<a href="{{ URL::route('comment.delete', $comment->id) }}" onclick="return confirm('Voulez-vous vraiment supprimer ce commentaire ?')"><span class="fi-trash icon" title="icon poubelle icon" aria-hidden="true"></span></a>
+        </td>
+        <td>
+        	{{-- HTML::linkRoute('comment.show','Vue rapide',$comment->id,['data-reveal-id'=>'comment-show','data-reveal-ajax'=>'true']) --}}
+        	<a href="{{ URL::route('comment.show', $comment->id) }}" target="_blank" data-reveal-id='comment-show' data-reveal-ajax='true'><span class="fi-eye icon" title="icon voir icon" aria-hidden="true"></span></a>
+        </td>
     </tr>
     @endforeach
     </tbody>
 </table>
-{{-- $comments->links() --}}
+{{ $comments->links() }}

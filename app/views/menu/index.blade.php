@@ -16,13 +16,19 @@
 			    <td>{{$item->position}}</td>
 			    <td>{{$item->name}}</td>
 			    <td>
-			    	@if(Auth::user()->admin == 1) {{HTML::linkRoute('admin.menu.edit','Modifier',$item->id)}}
-			    	@else{{'-'}}
+			    	@if(Auth::user()->admin == 1) 
+			    		{{-- HTML::linkRoute('admin.menu.edit','Modifier',$item->id) --}}
+			    		<a href="{{ URL::route('admin.menu.edit', $item->id) }}"><span class="fi-pencil icon" title="icon modifier icon" aria-hidden="true"></span></a>
+			    	@else
+			    		<span class="fi-ban icon" title="icon ban icon" aria-hidden="true"></span>
 			    	@endif
 			    </td>
 			    <td>
-			    	@if(Auth::user()->admin == 1){{HTML::linkRoute('admin.menu.destroy','Supprimer',$item->id,array('onclick' => 'return confirm(\'Voulez-vous vraiment supprimer cet onglet ?\')'))}}
-			    	@else{{'-'}}
+			    	@if(Auth::user()->admin == 1)
+			    		{{-- HTML::linkRoute('admin.menu.destroy','Supprimer',$item->id,array('onclick' => 'return confirm(\'Voulez-vous vraiment supprimer cet onglet ?\')')) --}}
+			    		<a href="{{ URL::route('admin.menu.destroy', $item->id) }}" onclick="return confirm('Voulez-vous vraiment supprimer cet onglet ?')"><span class="fi-trash icon" title="icon poubelle icon" aria-hidden="true"></span></a>
+			    	@else
+			    		<span class="fi-ban icon" title="icon ban icon" aria-hidden="true"></span>
 			    	@endif
 			    </td>
 	    	</tr>

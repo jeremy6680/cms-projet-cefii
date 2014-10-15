@@ -9,7 +9,22 @@ body {
 a {
 	color: #a88028;
 }
-
+.admin td a {
+	padding: 14px 14px 6px;
+}
+/*
+.admin td a:hover, .admin td a:focus {
+    border: solid 1px #3D3D3D;
+    border-radius: 50%;
+    color: #a88028;
+}
+*/
+.admin td a:hover, .admin td a:focus {
+    border: 1px solid #3D3D3D;
+    color: #A88028;
+    border-radius: 63% 20%;
+    background-color: yellow;
+}
 .admin th,
 .admin td {
 	text-align: center;
