@@ -129,6 +129,16 @@ footer.site-footer a {
 	color: #EE752C;
 }
 
+/**** Lien photo upload ****/
+
+a.camera {
+    position: relative;
+    top: 6px;
+    right: 35px;
+    z-index: 10;
+    color: #2C3E50;
+}
+
 /*********** TEST MARKDOWN ************/
 
 #preview {

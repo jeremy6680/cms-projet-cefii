@@ -28,8 +28,9 @@ class PhotoController extends BaseController {
             ->withErrors($this->validation->errors());
 		} else {
 			if($this->photogestion->save(Input::file('image'))) {
+				$path = $this->photogestion->getPath(Input::file('image'));
 				$this->layout->title = 'Ajouter une photo';
-				$this->layout->main = View::make('dash')->nest('content', 'photo_ok');
+				$this->layout->main = View::make('dash')->nest('content', 'photo_ok',compact('path'));
 			} else {
 				return Redirect::route('admin.photo.form')
                 ->with('error','Désolé mais votre image ne peut pas être envoyée !');

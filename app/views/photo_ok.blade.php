@@ -9,6 +9,7 @@
 			<div class="panel-heading">Envoi d'une photo</div>
 			<div class="panel-body"> 
 				Merci. Votre photo a bien été reçue et enregistrée.
+				Chemin d'accès : {{ asset($path) }}
 			</div>
 		</div>
 
