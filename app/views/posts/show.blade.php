@@ -21,7 +21,7 @@
 		            {{$post->title}}
 		        </h2>
 		        <div class="clearfix article-meta">
-		            <p><em><span class="auteur">Article rédigé par {{ $post->user->pseudo}}</span>, publé le <span class="date">{{ $post->created_at->format('d M Y') }}</span> dans la catégorie <span class="category">{{ $post->category }}</span></em></p>
+		            <p><em><span class="auteur">Article rédigé par {{ $post->user->pseudo}}</span>, publié le <span class="date">{{ $post->created_at->formatLocalized('%A %d %B %Y') }}</span> @if ($post->category) dans la catégorie <span class="category">{{ $post->category }}</span>@endif</em></p>
 		            <!--<span class="right label">{{HTML::link('#reply','Répondre',['style'=>'color:inherit'])}} </span>-->
 		        </div>
 		        <div class="social">

@@ -32,7 +32,7 @@
 <div class="row">
 	<div class="small-12 large-12 column" id="masthead">
 		<header>
-			{{ HTML::image('img/road.jpg', $alt="", $attributes = array()) }}
+			{{-- HTML::image('img/road.jpg', $alt="", $attributes = array()) --}}
 			<nav class="top-bar" data-topbar>
 				<ul class="title-area">
 					<!-- Title Area -->

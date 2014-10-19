@@ -13,7 +13,17 @@
 
 App::before(function($request)
 {
-	//
+    // Get default PHP locale
+    $phpLocale = Config::get('app.phplocale');
+
+    // Check for session override
+    if (Session::has('lang'))
+    {
+        App::setLocale(Session::get('lang'));
+        $phpLocale = Session::get('locale');
+    }
+
+    setlocale(LC_TIME, $phpLocale);
 });
 
 

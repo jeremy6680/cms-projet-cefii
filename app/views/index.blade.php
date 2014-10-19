@@ -10,11 +10,12 @@
 		    	{{link_to_route('posts.show',$post->title,$post->id)}}
 		    	</h2>
 		    	<div class="clearfix">
-				    <span class="left date">Publié le {{ $post->created_at->format('j F Y ') }}</span><br>
+		    		<span class="right label">{{$post->comment_count}} commentaires</span>
+				    <span class="left date">Publié le {{ $post->created_at->formatLocalized('%A %d %B %Y') }}</span><br>
 				    @if($post->category != NULL) 
 				    <span class="left category">Dans la catégorie <em>{{ $post->category }}</em></span>
 				    @endif
-				    <span class="right label">{{$post->comment_count}} commentaires</span>
+				    
 		    	</div>
 	    	</div>
 	    	<div class="post-content">
