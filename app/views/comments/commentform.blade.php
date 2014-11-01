@@ -6,7 +6,7 @@
             <a href="#" class="close">&times;</a>
         </div>
     @endif
-    {{ Form::open(['route'=>['comment.new',$post->id]]) }}
+    {{ Form::open(['route'=>['comment.new',$post->id], 'class' => 'commentForm hidden']) }}
         <div class="row">
             <div class="small-5 large-5 column">
             @if(Auth::check())

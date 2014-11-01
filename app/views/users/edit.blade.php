@@ -1,6 +1,8 @@
-@extends('templates.default')
+<h2 class="new-page">
+    Modifier l'utilisateur
+    <span class="right">{{ HTML::link('admin/','Annuler',['class' => 'button tiny radius']) }}</span>
+</h2>
 
-@section('content')
 		<div class="panel callout radius">	
 			<h4>Modification d'un utilisateur</h4>
 					{{ Form::open(array('url' => 'admin.user' . $user->id, 'method' => 'put')) }}	
@@ -23,4 +25,3 @@
 		<a href="javascript:history.back()" class="button small">
 			Retour
 		</a>
-@stop

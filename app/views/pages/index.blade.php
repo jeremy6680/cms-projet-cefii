@@ -41,7 +41,7 @@
 			    <td>
 			    	@if(Auth::user()->admin == 1)
 			    		{{-- HTML::linkRoute('admin.pages.destroy','Supprimer',$page->id,array('onclick' => 'return confirm(\'Voulez-vous vraiment supprimer cette page ?\')')) --}}
-			    		<a href="{{ URL::route('admin.pages.destroy', $page->id) }}" onclick="return confirm('Voulez-vous vraiment supprimer cette page ?')"><span class="fi-trash icon" title="icon poubelle icon" aria-hidden="true"></span></a>
+			    		<a href="{{ URL::route('pages.destroy', $page->id) }}" onclick="return confirm('Voulez-vous vraiment supprimer cette page ?')"><span class="fi-trash icon" title="icon poubelle icon" aria-hidden="true"></span></a>
 			    	@else
 			    		<span class="fi-ban icon" title="icon ban icon" aria-hidden="true"></span>
 			    	@endif

@@ -129,9 +129,9 @@ class PageController extends \BaseController
 		return Redirect::route('admin.pages.index')->withMessage("La page a été modifiée");
 	}
 
-	public function updateStatut($id)
+	public function updateStatut(Page $page)
 	{
-		$page = Page::findOrFail($id);
+		/*$page = Page::findOrFail($id);*/
 		$page->draft = Input::get('draft');
 		$page->update();
 		return Redirect::route('admin.pages.index')->withMessage("La page a été modifiée");

@@ -183,6 +183,7 @@ Route::group(['prefix' => 'admin','before'=>'auth'],function()
 	Route::get('/posts/create',['as' => 'posts.create','uses' => 'PostController@create']);
 	Route::get('/posts/{post}/edit',['as' => 'posts.edit','uses' => 'PostController@edit']);
 	Route::get('/posts/{post}/delete',['as' => 'posts.destroy','uses' => 'PostController@destroy']);
+	Route::get('/pages/{page}/delete',['as' => 'pages.destroy','uses' => 'PageController@destroy']);
 	/*Route::get('/menu/{menuItem}/delete',['as' => 'menu.destroy','uses' => 'MenuItemController@destroy']);*/
 	Route::get('/comment/list',['as' => 'comment.list','uses' => 'CommentController@listComment']);
 	Route::get('/comment/{comment}/show',['as' => 'comment.show','uses' => 'CommentController@showComment']);

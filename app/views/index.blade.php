@@ -9,13 +9,15 @@
 		    	<h2 class="post-title">
 		    	{{link_to_route('posts.show',$post->title,$post->id)}}
 		    	</h2>
-		    	<div class="clearfix">
+		    	<div class="clearfix article-meta">
 		    		<span class="right label">{{$post->comment_count}} commentaires</span>
-				    <span class="left date">Publié le {{ $post->created_at->formatLocalized('%A %d %B %Y') }}</span><br>
+				    <!-- 
+				    <span class="left date">Publié le {{ strtolower($post->created_at->formatLocalized('%A %d %B %Y')) }}</span><br>
 				    @if($post->category != NULL) 
 				    <span class="left category">Dans la catégorie <em>{{ $post->category }}</em></span>
 				    @endif
-				    
+				    -->
+				    <p><em><span class="auteur">Article rédigé par {{ $post->user->pseudo}}</span>, publié le <span class="date">{{ strtolower($post->created_at->formatLocalized('%A %d %B %Y')) }}</span> @if ($post->category) dans la catégorie <span class="category">{{ $post->category }}</span>@endif</em></p>
 		    	</div>
 	    	</div>
 	    	<div class="post-content">

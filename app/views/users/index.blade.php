@@ -32,7 +32,7 @@
 				    </td>
 				    <td>
 				    	{{-- link_to_route('admin.user.show', 'Voir', array($user->id), array('class' => 'button success small radius')) --}}
-				    	<a href="{{ URL::route('admin.user.show', $user->id) }}" target="_blank"><span class="fi-eye icon" title="icon voir icon" aria-hidden="true"></span></a>
+				    	<a href="{{ URL::route('admin.user.show', $user->id) }}"><span class="fi-eye icon" title="icon voir icon" aria-hidden="true"></span></a>
 				    </td>
 				    </tr>
 				  @endforeach
