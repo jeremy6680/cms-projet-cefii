@@ -1,0 +1,230 @@
+/*.icon {
+	font-size: 30px;
+	color: #A9A9A9;
+}
+
+.icon:hover {
+	color: lightgreen;
+}*/
+
+/****** General Styles *******/
+
+a {
+	color: #EE752C;
+}
+
+a:hover, a:active, a:focus {
+	color: #C65411;
+}
+
+body {
+	background: url('../img/bg-texture.jpg') center center repeat;
+	font-family: "Fanwood Text",Georgia,serif;
+	color: #3D3D3D;
+}
+
+.label {
+    font-family: "Fanwood Text",Georgia,serif;
+    background-color: #C3F2E8;
+    color: #3D3D3D;
+}
+
+.row {
+	background-color: white;
+}
+
+img {
+    margin-bottom: 10px;
+}
+
+/**** Header ****/
+
+#masthead {
+	margin-bottom: 20px;
+}
+
+.top-bar-section ul li > a {
+    font-family: "Fanwood Text",Georgia,serif;
+    font-size: 1rem;
+}
+
+.top-bar {
+    background: transparent;
+}
+
+.top-bar-section ul li {
+    background: transparent;
+}
+
+.top-bar-section li.active:not(.has-form) a:not(.button) {
+    color: #EE752C;
+    background: transparent;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button) {
+	color: #EE752C;
+    background: transparent;
+}
+
+.top-bar-section ul li:hover:not(.has-form) > a {
+    color: #EE752C;
+}
+
+.top-bar-section li.active:not(.has-form) a:hover:not(.button) {
+    background: none repeat scroll 0% 0% #413F44;
+    color: #EE752C;
+}
+
+.top-bar-section ul li:hover:not(.has-form) > a {
+    background: none repeat scroll 0% 0% #413F44;
+    color: #EE752C;
+}
+
+.top-bar-section li.active a {
+    background: none repeat scroll 0% 0% #413F44 !important;
+    color: #EE752C !important;
+}
+
+/**** Hamburger Menu ****/
+
+.top-bar .toggle-topbar.menu-icon a {
+    color: #EE752C;
+}
+
+.top-bar .toggle-topbar.menu-icon a span:after {
+    box-shadow: 0px 0px 0px 1px #EE752C, 0px 7px 0px 1px #EE752C, 0px 14px 0px 1px #EE752C;
+}
+
+/**** Previous / Next ****/
+
+.previous, .next {
+	display: inline-block;
+	width: 100px;
+}
+
+.previous {
+	position: fixed;
+	top: 260px;
+}
+
+.next {
+	position: fixed;
+	right: 154px;
+	text-align: right;
+	top: 260px;
+}
+
+.previous a, .next a {
+	color: #ee752c;
+}
+
+.previous a:hover, .next a:hover {
+	color: #C65411;
+}
+
+.previous .icon, .next .icon {
+	padding: 13px;
+	background-color: #413F44;
+	line-height: 100px;
+	border-radius: 50%;
+}
+
+.navi-text {
+	border-top: solid 1px grey;
+	color: #413F44;
+	text-transform: uppercase;
+	padding: 10px 0;
+}
+
+footer.site-footer {
+	padding: 10px;
+}
+
+footer.site-footer p {
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+footer.site-footer a {
+	font-size: 12px;
+	color: #EE752C;
+}
+
+/***** Posts *******/
+
+article {
+	font-family: "Fanwood Text",Georgia,serif;
+}
+
+article p {
+	font-size: 1.2rem;
+}
+
+article ul, article ol, article dl {
+	font-size: 1.2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Quattrocento",Georgia,serif;
+}
+
+article a:hover, article a:active, article a:focus {
+	color: #EE752C;
+	text-decoration: underline;
+}
+
+.post-header {
+	margin-bottom: 20px;
+}
+
+.comments h3 {
+    font-size: 1.25rem;
+}
+
+.comments h4 {
+    font-size: 1.2rem;
+}
+
+.comments li {
+	list-style-type: none;
+}
+
+/**** Post meta ***/
+
+.article-meta p {
+	font-size: 1rem;
+}
+
+/**** Social ****/
+
+.social {
+    border-top: 1px solid #CCC;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+
+.twitter-share-button {
+	position: relative;
+	top: 2px;
+}
+
+/************ MEDIA QUERIES ***********/
+
+@media only screen and (min-width: 40.063em) {
+	#masthead {
+	    margin-bottom: 80px;
+	    margin-top: 20px;
+	}
+	.top-bar {
+	    border-top: 1px dotted #D3D3D3;
+	    border-bottom: 1px dotted #D3D3D3;
+	}
+	.top-bar-section li:not(.has-form) a:hover:not(.button) {
+	    background: none repeat scroll 0% 0% #413F44;
+	}
+}
