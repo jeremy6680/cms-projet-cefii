@@ -9,7 +9,7 @@ Particulièrement adapté aux blogs, ce CMS s’adresse avant tout aux freelance
 
 Pour voir le front du CMS : http://easypeasycms.jeremymarchandeau.com/public/
 
-Le bouton de connexion se trouve à droite, dans le footer
+*Le bouton de connexion se trouve à droite, dans le footer*
 
 Pour se connecter : http://easypeasycms.jeremymarchandeau.com/public/login
 
@@ -19,7 +19,7 @@ Mot de passe Administrateur : AdminPWD
 Identifiant simple utilisateur : User
 Mot de passe Administrateur : User1PWD
 
-Vous êtes maintenant connecté. Pour accéder au back-office : cliquez sur le bouton à droite dans le footer
+*Vous êtes maintenant connecté. Pour accéder au back-office : cliquez sur le bouton à droite dans le footer*
 
 ##Prérequis serveur
 
@@ -49,7 +49,7 @@ composer install
 
 Si ce n’est pas déjà fait, vous feriez peut-être bien d’installer Composer globalement afin de faciliter l’utilisation future.
 ###3ème étape : Configurer l’environnement local
-Maintenant que Laravel 4 est installé, vous avez besoin de mettre à jour les fichiers app/config/database.php (pour configurer la base de données utilisée pour le projet) et app/config/app.php (réglages de base).
+Maintenant que Laravel 4 est installé, vous avez besoin de mettre à jour les fichiers ***app/config/database.php*** (pour configurer la base de données utilisée pour le projet) et ***app/config/app.php*** (réglages de base).
 Auparavant, vous devriez avoir créé une nouvelle base de données MySQL dans phpMyAdmin.
 
 ###4ème étape : Migration et population de la Base de données
