@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePagesTable extends Migration {
+class CreatePages extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreatePagesTable extends Migration {
 	 */
 	public function up()
 	{
-		 Schema::create('pages', function(Blueprint $table) {
+		 Schema::create('pages', function($table) {
 			$table->increments('id');
 			$table->string('title', 200)->unique();
 			$table->string('slug', 200)->unique();
